@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+
+@font-face {
+    font-family: 'Bopomofo';
+    src: url('fonts/bopomofo.woff2');
+}
+
+@font-face {
+    font-family: 'Iansui';
+    src: url('fonts/iansui.ttf');
+}
+
+@font-face {
+    font-family: 'IansuiPro';
+    src: url('fonts/iansui-pro.ttf');
+}
+
+@font-face {
+    font-family: 'KaiTi';
+    src: url('fonts/revised-dict.woff');
+}
+
+@font-face {
+    font-family: 'CoolMing';
+    src: url('fonts/cool-ming.ttf');
+}
+
+ruby {
+    align-items: center;
+    display: inline-flex;
+    font-family: inherit;
+    line-height: 1;
+    min-height: 1em;
+}
+
+    ruby.en {
+        font-family: 'KaiTi', Times;
+        font-size: 0.8em
+    }
+
+    ruby rt {
+        display: block;
+        color: #191717c4;
+        font-family: 'Bopomofo', 'Noto Sans TC';
+        font-size: 30%;
+        font-weight: 500;
+        line-height: 1;
+        text-align: center;
+        padding-left: 0.3em;
+        margin-right: 0.5em;
+        position: relative;
+        -webkit-text-orientation: upright;
+        text-orientation: upright;
+        writing-mode: vertical-lr;
+        white-space: nowrap;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        width: 1.5em;
+    }
+
+        ruby rt:empty {
+            display: none
+        }
+
+.ruby-tmdot {
+    height: 1.5em;
+    display: inline-block;
+    margin-top: -1.4em
+}
+
+@-moz-document url-prefix() {
+    .ruby-tm {
+        display: block;
+        line-height: 1;
+        position: absolute;
+        bottom: 0.4em;
+        right: -0.6em;
+        writing-mode: horizontal-tb
+    }
+
+    .ruby-tmdiao {
+        display: block;
+        line-height: 1;
+        position: absolute;
+        bottom: -0.3em;
+        right: -0.6em;
+        writing-mode: horizontal-tb
+    }
+}
+
+@media (-ms-high-contrast:none),screen and (-ms-high-contrast:active) {
+    ruby {
+        margin-right: 0
+    }
+
+        ruby rt {
+            font-size: 29%;
+            text-shadow: rgba(0,0,0,0.01) 0 0 1px;
+            top: -0.25em
+        }
+
+    .ruby-tm {
+        display: block;
+        line-height: 1;
+        position: absolute;
+        right: -0.35em;
+        bottom: 0.6em;
+        writing-mode: horizontal-tb
+    }
+
+    .ruby-tmdot {
+        height: auto;
+        margin-top: 0
+    }
+}
+
+@supports (-ms-ime-align:auto) {
+    ruby {
+        margin-right: 0
+    }
+
+        ruby rt {
+            font-size: 29%;
+            text-shadow: rgba(0,0,0,0.01) 0 0 1px;
+            top: 0.15em
+        }
+
+    .ruby-tm {
+        display: block;
+        line-height: 1;
+        position: absolute;
+        right: -0.35em;
+        bottom: 0.6em;
+        writing-mode: horizontal-tb
+    }
+
+    .ruby-tmdot {
+        height: auto;
+        margin-top: 0
+    }
+}
+
+body {
+    font-family: 'KaiTi', sans-serif;
+    font-size: 1.3em;
+    text-align: justify;
+    text-justify: distribute;
+    margin: 0;
+    padding: 0;
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-family: 'KaiTi', sans-serif;
+    font-weight: normal;
+}
+
+#container {
+    width: min(calc(100vw - 50px), 1200px);
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+#searchSection {
+    width: 25%;
+    padding: 20px;
+    position: relative;
+    background-color: #f1ede3;
+    color: #191717;
+}
+
+#list-scroll {
+    overflow: scroll;
+    height: max(calc(90% - 20px), calc(100% - 63px));
+}
+
+#resultSection {
+    width: 70%;
+    padding: 20px;
+    border-left: 1px solid #e6decd;
+    background-color: #f6f3ed;
+    color: #191717;
+    overflow: scroll;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #666;
+}
+
+input[type="text"] {
+    width: 100%;
+    height: min(43px, 10%);
+    font-size: 1em;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #e6decd;
+    box-sizing: border-box;
+}
+
+.autocomplete-suggestions {
+    background-color: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.autocomplete-suggestion {
+    padding: 10px;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .autocomplete-suggestion:hover {
+        background-color: #e6decd;
+        border-radius: 8px;
+    }
+
+.word-page {
+    padding: 20px;
+}
+
+.word-title {
+    font-size: 2.5em;
+    margin: 0px 0px 20px 0px;
+    line-height: 1.5em;
+}
+
+.word-info {
+    margin-bottom: 20px;
+}
+
+    .word-info .aliases {
+        display: none;
+    }
+
+    .word-info label {
+        font-weight: bold;
+    }
+
+    .word-info a {
+        color: darkgoldenrod;
+        text-decoration: none;
+        box-shadow: inset 0 0 0 0 darkgoldenrod;
+        transition: .3s ease-in-out;
+    }
+
+        .word-info a:hover {
+            color: #f6f3ed;
+            padding: 0.25rem;
+            box-shadow: inset 200px 0 0 0 darkgoldenrod;
+        }
+
+#wordPartOfSpeech {
+    background: #e6decd;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 0.5em;
+/*    color: #746b62;*/
+}
+
+    #wordPartOfSpeech:empty {
+        display: none;
+    }
+
+#aliases-icon {
+    font-family: 'Noto Sans TC';
+    font-weight: bold;
+    background: darkred;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+#definition {
+    line-height: 2em;
+    font-family: 'Iansui', 'IansuiPro', 'KaiTi', 'CoolMing', sans-serif;
+}
+
+#wordSampleSentence {
+    line-height: 1.5em;
+    border-left: 4px solid;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 40px;
+    background: #e2dfda;
+}
+
+#book {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #191717c4;
+}
+
+@media only screen and (max-width: 600px) {
+    ruby rt {
+        margin-right: 0.3em;
+    }
+
+    body {
+        font-size: 1em;
+    }
+
+    #container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0;
+    }
+
+    #searchSection {
+        width: 95%;
+        height: 30%;
+        padding: 20px;
+        border-radius: 0;
+    }
+
+    input[type="text"] {
+        width: calc(100% - 20px);
+        height: max(37px, 10%);
+    }
+
+    .autocomplete-suggestion {
+        width: calc(100% - 40px);
+    }
+
+    #resultSection {
+        width: 95%;
+        height: 70%;
+        border-top: 1px solid #e6decd;
+        border-radius: 0;
+    }
+
+    #searchPage {
+        margin-right: 20px;
+    }
+}

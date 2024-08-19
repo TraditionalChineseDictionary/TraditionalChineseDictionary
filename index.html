@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Dictionary</title>
+    <link rel="stylesheet" href="style.css?v=2.11">
+</head>
+<body>
+    <div id="container">
+        <div id="searchSection">
+            <input type="text" id="word" oninput="showSuggestions()"><br>
+            <div id="list-scroll"><div id="autocomplete-list" class="autocomplete-suggestions"></div></div>
+        </div>
+
+        <div id="resultSection">
+            <div class="word-page" id="searchPage" style="display: none;">
+                <h1 class="word-title" id="wordTitle"></h1>
+                <div class="word-info aliases">
+                    <span id="aliases-icon">或</span>
+                    <span id="aliases"></span>
+                </div>
+                <div class="word-info" style="display: flex;">
+                    <span id="wordPartOfSpeech"></span>
+                    <div id="definition"></div>
+                </div>
+                <div class="word-info">
+                    <div id="wordSampleSentence"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>let dictionary = {};
+
+        function loadDictionary() {
+            fetch('entries.json?v=2')
+                .then(response => response.json())
+                .then(data => {
+                    dictionary = data;
+                    showSuggestions();
+                    displayRandomEntry();
+                })
+                .catch(error => console.error('Error loading dictionary:', error));
+        }
+
+        function displayRandomEntry() {
+            const keys = Object.keys(dictionary);
+            if (keys.length > 0) {
+                const randomIndex = Math.floor(Math.random() * keys.length);
+                const randomWord = keys[randomIndex];
+                search(randomWord);
+            }
+        }
+
+        function showSuggestions() {
+            const input = document.getElementById('word');
+            const filter = input.value.trim().toLowerCase();
+            let suggestions = new Set();
+            const addedWords = new Set();
+
+            Object.keys(dictionary).forEach(word => {
+                if (word.toLowerCase().includes(filter)) {
+                    suggestions.add(word);
+                    addedWords.add(word.toLowerCase());
+                }
+                const aliases = dictionary[word].aliases;
+                if (aliases) {
+                    aliases.forEach(alias => {
+                        if (alias.toLowerCase().includes(filter)) {
+                            suggestions.add(word);
+                            addedWords.add(word.toLowerCase());
+                        }
+                    });
+                }
+
+                const wrongAliases = dictionary[word].wrongAliases;
+                if (wrongAliases) {
+                    wrongAliases.forEach(alias => {
+                        if (alias.toLowerCase().includes(filter)) {
+                            suggestions.add(word);
+                            addedWords.add(word.toLowerCase());
+                        }
+                    });
+                }
+            });
+
+            if (filter.match(/[\u4E00-\u9FAF]/)) {
+                const lastCharacter = filter[filter.length - 1];
+                Object.keys(dictionary).forEach(word => {
+                    if (word.includes(`～${lastCharacter}`) && !addedWords.has(word.toLowerCase())) {
+                        suggestions.add(word);
+                        addedWords.add(word.toLowerCase());
+                    }
+                });
+
+                Object.keys(dictionary).forEach(word => {
+                    if (word.includes('～')) {
+                        const suffix = word.replace('～', '');
+                        if (filter.endsWith(suffix) && !addedWords.has(word.toLowerCase())) {
+                            suggestions.add(word);
+                            addedWords.add(word.toLowerCase());
+                        }
+                    }
+                });
+
+                const firstCharacter = filter[0];
+                Object.keys(dictionary).forEach(word => {
+                    if (word.includes(`${firstCharacter}～`) && !addedWords.has(word.toLowerCase())) {
+                        suggestions.add(word);
+                        addedWords.add(word.toLowerCase());
+                    }
+                });
+
+                Object.keys(dictionary).forEach(word => {
+                    if (word.includes('～')) {
+                        const prefix = word.replace('～', '');
+                        if (filter.startsWith(prefix) && !addedWords.has(word.toLowerCase())) {
+                            suggestions.add(word);
+                            addedWords.add(word.toLowerCase());
+                        }
+                    }
+                });
+
+                Object.keys(dictionary).forEach(word => {
+                    if (word.includes('～')) {
+                        const parts = word.split('～');
+                        const prefix = parts[0];
+                        const suffix = parts[1];
+                        if (filter.startsWith(prefix) && filter.endsWith(suffix) && !addedWords.has(word.toLowerCase())) {
+                            suggestions.add(word);
+                            addedWords.add(word.toLowerCase());
+                        }
+                    }
+                });
+            }
+
+            const suggestionBox = document.getElementById('autocomplete-list');
+            suggestionBox.innerHTML = '';
+
+            if (!filter) {
+                suggestions = new Set(Object.keys(dictionary)); // Show all entries by default
+            }
+
+            const suggestionArray = [...suggestions];
+            if (suggestionArray.length > 0) {
+                const randomIndex = Math.floor(Math.random() * suggestionArray.length);
+                const randomResult = suggestionArray[randomIndex];
+                search(randomResult);
+            }
+
+            suggestionArray.forEach(suggestion => {
+                const div = document.createElement('div');
+                div.classList.add('autocomplete-suggestion');
+                div.innerText = suggestion;
+                div.addEventListener('click', function () {
+                    search(suggestion);
+                });
+                suggestionBox.appendChild(div);
+            });
+
+            suggestionBox.style.display = 'block';
+        }
+
+        function findEntry(word) {
+            if (dictionary[word]) {
+                return dictionary[word];
+            }
+
+            for (const entryWord in dictionary) {
+                const aliases = dictionary[entryWord].aliases;
+                if (aliases && aliases.includes(word)) {
+                    return dictionary[entryWord];
+                }
+
+                const wrongAliases = dictionary[entryWord].wrongAliases;
+                if (wrongAliases && wrongAliases.includes(word)) {
+                    return dictionary[entryWord];
+                }
+            }
+
+            const lastCharacter = word[word.length - 1];
+            for (const entryWord in dictionary) {
+                if (entryWord.includes(`～${lastCharacter}`)) {
+                    const mainWord = word.slice(0, word.length - entryWord.length + 1);
+                    if (dictionary[mainWord + entryWord]) {
+                        return dictionary[mainWord + entryWord];
+                    }
+                }
+            }
+
+            for (const entryWord in dictionary) {
+                if (entryWord.includes('～')) {
+                    const suffix = entryWord.replace('～', '');
+                    if (word.endsWith(suffix)) {
+                        const mainWord = word.slice(0, word.length - suffix.length);
+                        if (dictionary[mainWord + '～' + suffix]) {
+                            return dictionary[mainWord + '～' + suffix];
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        function addLink(anchorTags) {
+            anchorTags.forEach(anchor => {
+                anchor.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const clickedWord = this.dataset.word;
+                    const entry = findEntry(clickedWord);
+                    if (entry) {
+                        search(clickedWord);
+                    } else {
+                        alert('Word not found in the dictionary.');
+                    }
+                });
+            });
+        }
+
+        function replaceBookPunctuation(text) {
+            return text.replace(/《|〈/g, "<span id='book'>")
+                .replace(/》|〉/g, "</span>");
+        }
+
+        function search(word) {
+            const entry = findEntry(word);
+            if (entry) {
+                const wordTitle = document.getElementById('wordTitle');
+                wordTitle.innerHTML = '';
+
+                // Use the entry word for the title display
+                const titleWord = Object.keys(dictionary).find(key => dictionary[key] === entry);
+
+                for (let i = 0; i < titleWord.length; i++) {
+                    const rubyTag = document.createElement('ruby');
+                    const rbTag = document.createElement('rb');
+                    const rtTag = document.createElement('rt');
+                    rbTag.textContent = titleWord[i];
+                    rtTag.textContent = entry.pronunciation[i] || '';
+                    rubyTag.appendChild(rbTag);
+                    rubyTag.appendChild(rtTag);
+                    wordTitle.appendChild(rubyTag);
+                }
+
+                const aliasesDiv = document.querySelector('.word-info.aliases');
+                if (entry.aliases && entry.aliases.length > 0) {
+                    const aliasesText = entry.aliases.join('、');
+                    document.getElementById('aliases').textContent = aliasesText;
+                    aliasesDiv.style.display = 'block';
+                } else {
+                    aliasesDiv.style.display = 'none';
+                }
+
+                if (entry.partOfSpeech) document.getElementById('wordPartOfSpeech').textContent = entry.partOfSpeech;
+
+                const wordDefinition = document.getElementById('definition');
+                wordDefinition.innerHTML = replaceBookPunctuation(entry.definition).replace(/\[(.*?)\]/g, (match, innerWord) => {
+                    return `<a href="#" data-word="${innerWord}" data-original="${titleWord}">${innerWord}</a>`;
+                });
+
+                const wordSampleSentence = document.getElementById('wordSampleSentence');
+                if (entry.sampleSentence.length > 0) {
+                    wordSampleSentence.innerHTML = replaceBookPunctuation(entry.sampleSentence).replace(/\[(.*?)\]/g, (match, innerWord) => {
+                        return `<a href="#" data-word="${innerWord}" data-original="${titleWord}">${innerWord}</a>`;
+                    });
+                    wordSampleSentence.style.display = 'block';
+                } else {
+                    wordSampleSentence.style.display = 'none';
+                }
+
+                addLink(wordSampleSentence.querySelectorAll('a'));
+                addLink(wordDefinition.querySelectorAll('a'));
+
+                document.getElementById('searchPage').style.display = 'block';
+            } else {
+                alert('Word not found in the dictionary.');
+            }
+        }
+
+        window.onload = loadDictionary;</script>
+</body>
+</html>
