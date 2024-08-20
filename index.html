@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-tw">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Dictionary</title>
-    <link rel="stylesheet" href="style.css?v=2.11">
+    <title>燭字典，逐字逐句點</title>
+    <meta name="description" content="燭字典，受教育部異形詞手冊啟發。查詢經常搞混的字詞，輕鬆辨析正確用字。">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Zutek3134/zutek3134.github.io/gh-pages/images/zeeb.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="container">
@@ -28,18 +30,28 @@
                     <div id="wordSampleSentence"></div>
                 </div>
             </div>
+            <div class="word-info" id="share-box">
+                <div id="share-box-link"></div>
+                <div id="share-box-text">點擊複製</div>
+            </div>
         </div>
+        <textarea id="share-box-textarea" style="display: none"></textarea>
     </div>
 
     <script>let dictionary = {};
 
         function loadDictionary() {
-            fetch('entries.json?v=2')
+            fetch('entries.json')
                 .then(response => response.json())
                 .then(data => {
                     dictionary = data;
                     showSuggestions();
-                    displayRandomEntry();
+
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const word = urlParams.get('word');
+
+                    if (word) search(word);
+                    else displayRandomEntry();
                 })
                 .catch(error => console.error('Error loading dictionary:', error));
         }
@@ -138,15 +150,10 @@
             const suggestionBox = document.getElementById('autocomplete-list');
             suggestionBox.innerHTML = '';
 
+            const suggestionArray = [...suggestions];
+
             if (!filter) {
                 suggestions = new Set(Object.keys(dictionary)); // Show all entries by default
-            }
-
-            const suggestionArray = [...suggestions];
-            if (suggestionArray.length > 0) {
-                const randomIndex = Math.floor(Math.random() * suggestionArray.length);
-                const randomResult = suggestionArray[randomIndex];
-                search(randomResult);
             }
 
             suggestionArray.forEach(suggestion => {
@@ -213,7 +220,7 @@
                     if (entry) {
                         search(clickedWord);
                     } else {
-                        alert('Word not found in the dictionary.');
+                        alert('該字詞尚未收錄！');
                     }
                 });
             });
@@ -227,10 +234,12 @@
         function search(word) {
             const entry = findEntry(word);
             if (entry) {
+                const newUrl = `${window.location.pathname}?word=${encodeURIComponent(word)}`;
+                window.history.replaceState({}, '', newUrl);
+
                 const wordTitle = document.getElementById('wordTitle');
                 wordTitle.innerHTML = '';
 
-                // Use the entry word for the title display
                 const titleWord = Object.keys(dictionary).find(key => dictionary[key] === entry);
 
                 for (let i = 0; i < titleWord.length; i++) {
@@ -261,24 +270,37 @@
                 });
 
                 const wordSampleSentence = document.getElementById('wordSampleSentence');
-                if (entry.sampleSentence.length > 0) {
-                    wordSampleSentence.innerHTML = replaceBookPunctuation(entry.sampleSentence).replace(/\[(.*?)\]/g, (match, innerWord) => {
-                        return `<a href="#" data-word="${innerWord}" data-original="${titleWord}">${innerWord}</a>`;
-                    });
-                    wordSampleSentence.style.display = 'block';
-                } else {
-                    wordSampleSentence.style.display = 'none';
-                }
+                wordSampleSentence.innerHTML = replaceBookPunctuation(entry.sampleSentence).replace(/\[(.*?)\]/g, (match, innerWord) => {
+                    return `<a href="#" data-word="${innerWord}" data-original="${titleWord}">${innerWord}</a>`;
+                });
+
+                const shareBox = document.getElementById('share-box-link');
+                const url = window.location.href.split('?')[0] + 'entries/' + titleWord + '.html';
+                shareBox.innerHTML = url;
+                textareaForCopyURL.value = url;
+                document.getElementById('share-box-text').innerHTML = '點擊複製網址';
+
+                document.getElementById('share-box').addEventListener('click', () => {
+                    textareaForCopyURL.select();
+                    textareaForCopyURL.setSelectionRange(0, 99999);
+                    try {
+                        navigator.clipboard.writeText(copyText.value);
+                        document.getElementById('share-box-text').innerHTML = '複製成功！';
+                    } catch (err) {
+                        document.getElementById('share-box-text').innerHTML = '複製失敗⋯⋯';
+                    }
+                });
 
                 addLink(wordSampleSentence.querySelectorAll('a'));
                 addLink(wordDefinition.querySelectorAll('a'));
 
                 document.getElementById('searchPage').style.display = 'block';
             } else {
-                alert('Word not found in the dictionary.');
+                alert('該字詞尚未收錄！');
             }
         }
 
+        const textareaForCopyURL = document.getElementById('share-box-textarea');
         window.onload = loadDictionary;</script>
 </body>
 </html>
