@@ -7,6 +7,7 @@
     <meta name="description" content="燭字典，受教育部異形詞手冊啟發。查詢經常搞混的字詞，輕鬆辨析正確用字。">
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Zutek3134/zutek3134.github.io/gh-pages/images/zeeb.png">
     <link rel="stylesheet" href="style.css">
+    <!--<script src="https://emoji.fluent-cdn.com/latest/fluentemoji.min.js" crossorigin="anonymous"></script>-->
 </head>
 <body>
     <div id="container">
@@ -31,14 +32,21 @@
                 </div>
             </div>
             <div class="word-info" id="share-box">
-                <div id="share-box-link"></div>
-                <div id="share-box-text">點擊複製</div>
+                <input id="share-box-link" type="url" readonly>
+                <div id="share-box-text"></div>
             </div>
         </div>
-        <textarea id="share-box-textarea" style="display: none"></textarea>
+    </div>
+    <div class="previewCard">
+        <img src="" class="card-img-top" />
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+        </div>
     </div>
 
-    <script>let dictionary = {};
+    <script>// hi
+        let dictionary = {};
 
         function loadDictionary() {
             fetch('entries.json')
@@ -86,9 +94,9 @@
                     });
                 }
 
-                const wrongAliases = dictionary[word].wrongAliases;
-                if (wrongAliases) {
-                    wrongAliases.forEach(alias => {
+                const hiddenAliases = dictionary[word].hiddenAliases;
+                if (hiddenAliases) {
+                    hiddenAliases.forEach(alias => {
                         if (alias.toLowerCase().includes(filter)) {
                             suggestions.add(word);
                             addedWords.add(word.toLowerCase());
@@ -180,8 +188,8 @@
                     return dictionary[entryWord];
                 }
 
-                const wrongAliases = dictionary[entryWord].wrongAliases;
-                if (wrongAliases && wrongAliases.includes(word)) {
+                const hiddenAliases = dictionary[entryWord].hiddenAliases;
+                if (hiddenAliases && hiddenAliases.includes(word)) {
                     return dictionary[entryWord];
                 }
             }
@@ -247,7 +255,20 @@
                     const rbTag = document.createElement('rb');
                     const rtTag = document.createElement('rt');
                     rbTag.textContent = titleWord[i];
-                    rtTag.textContent = entry.pronunciation[i] || '';
+
+                    if (entry.pronunciation[i].startsWith('˙')) {
+                        const rtDot = document.createElement('span');
+                        rtDot.classList.add('ruby-tmdot');
+                        rtDot.textContent = '˙';
+                        rtTag.appendChild(rtDot);
+                        const pronunciationText = document.createTextNode(entry.pronunciation[i].slice(1) || '');
+                        rtTag.appendChild(pronunciationText);
+                    }
+                    else {
+                        const pronunciationText = document.createTextNode(entry.pronunciation[i] || '');
+                        rtTag.appendChild(pronunciationText);
+                    }
+
                     rubyTag.appendChild(rbTag);
                     rubyTag.appendChild(rtTag);
                     wordTitle.appendChild(rubyTag);
@@ -266,28 +287,28 @@
 
                 const wordDefinition = document.getElementById('definition');
                 wordDefinition.innerHTML = replaceBookPunctuation(entry.definition).replace(/\[(.*?)\]/g, (match, innerWord) => {
-                    return `<a href="#" data-word="${innerWord}" data-original="${titleWord}">${innerWord}</a>`;
+                    return `<a href="#" data-word="${innerWord}">${innerWord}</a>`;
                 });
 
                 const wordSampleSentence = document.getElementById('wordSampleSentence');
                 wordSampleSentence.innerHTML = replaceBookPunctuation(entry.sampleSentence).replace(/\[(.*?)\]/g, (match, innerWord) => {
-                    return `<a href="#" data-word="${innerWord}" data-original="${titleWord}">${innerWord}</a>`;
+                    return `<a href="#" data-word="${innerWord}">${innerWord}</a>`;
                 });
 
-                const shareBox = document.getElementById('share-box-link');
-                const url = window.location.href.split('?')[0] + 'entries/' + titleWord + '.html';
-                shareBox.innerHTML = url;
+                let url = window.location.href.split('?')[0] + 'entries/' + titleWord;
+                url += url.includes('dict') ? '' : '.html';
+                textareaForCopyURL.innerHTML = url;
                 textareaForCopyURL.value = url;
-                document.getElementById('share-box-text').innerHTML = '點擊複製網址';
+                copyUrlDesc.innerHTML = '點擊複製網址';
 
                 document.getElementById('share-box').addEventListener('click', () => {
-                    textareaForCopyURL.select();
-                    textareaForCopyURL.setSelectionRange(0, 99999);
                     try {
-                        navigator.clipboard.writeText(copyText.value);
-                        document.getElementById('share-box-text').innerHTML = '複製成功！';
-                    } catch (err) {
-                        document.getElementById('share-box-text').innerHTML = '複製失敗⋯⋯';
+                        textareaForCopyURL.select();
+                        document.execCommand('copy');
+                        copyUrlDesc.innerHTML = '複製成功，分享出去吧';
+                    }
+                    catch (err) {
+                        copyUrlDesc.innerHTML = '複製失敗⋯⋯「' + err + '」';
                     }
                 });
 
@@ -300,7 +321,8 @@
             }
         }
 
-        const textareaForCopyURL = document.getElementById('share-box-textarea');
+        const textareaForCopyURL = document.getElementById('share-box-link');
+        const copyUrlDesc = document.getElementById('share-box-text');
         window.onload = loadDictionary;</script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wdth@87.5&display=swap');
 
 @font-face {
     font-family: 'Bopomofo';
@@ -11,18 +12,18 @@
 }
 
 @font-face {
-    font-family: 'IansuiPro';
-    src: url('fonts/iansui-pro.ttf');
-}
-
-@font-face {
-    font-family: 'KaiTi';
+    font-family: 'MoeKai';
     src: url('fonts/revised-dict.woff');
 }
 
 @font-face {
     font-family: 'CoolMing';
     src: url('fonts/cool-ming.ttf');
+}
+
+:root {
+    --HeiTi: 'PingFang TC', 'HeiTi TC', 'Microsoft JhengHei', 'Noto Sans TC';
+    --KaiTi: 標楷體2, '標楷體', "BiauKai", "DFKai-sb", 'MoeKai';
 }
 
 ruby {
@@ -34,15 +35,15 @@ ruby {
 }
 
     ruby.en {
-        font-family: 'KaiTi', Times;
+        font-family: Times;
         font-size: 0.8em
     }
 
     ruby rt {
         display: block;
-        color: #191717c4;
-        font-family: 'Bopomofo', 'Noto Sans TC';
-        font-size: 30%;
+        color: #4c4a49;
+        font-family: 'Bopomofo';
+        font-size: calc(1em * 0.33);
         font-weight: 500;
         line-height: 1;
         text-align: center;
@@ -56,6 +57,7 @@ ruby {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         width: 1.5em;
+        -webkit-text-size-adjust: none;
     }
 
         ruby rt:empty {
@@ -63,9 +65,11 @@ ruby {
         }
 
 .ruby-tmdot {
-    height: 1.5em;
     display: inline-block;
-    margin-top: -1.4em
+    height: 1.5em;
+    margin-top: -1em;
+    margin-bottom: -0.5em;
+    font-family: 'Noto Sans TC';
 }
 
 @-moz-document url-prefix() {
@@ -141,7 +145,7 @@ ruby {
 }
 
 body {
-    font-family: 'KaiTi', sans-serif;
+    font-family: var(--KaiTi), sans-serif;
     font-size: 1.3em;
     text-align: justify;
     text-justify: distribute;
@@ -156,13 +160,12 @@ body {
 
 h1 {
     margin-bottom: 20px;
-    font-family: 'KaiTi', sans-serif;
     font-weight: normal;
 }
 
 #container, #standaloneContainer {
-    width: min(calc(100vw - 50px), 1200px);
-    height: calc(100% - 50px);
+    width: min(calc(100dvw - 50px), 1200px);
+    height: calc(100dvh - 50px);
     display: flex;
     flex-direction: row;
     background-color: #fff;
@@ -172,7 +175,7 @@ h1 {
 }
 
 #standaloneContainer {
-    width: min(calc(100vw - 50px), 922px);
+    width: min(calc(100dvw - 50px), 922px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -287,7 +290,7 @@ input[type="text"] {
     }
 
 #aliases-icon {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--HeiTi);
     font-weight: bold;
     background: darkred;
     padding: 5px;
@@ -297,7 +300,7 @@ input[type="text"] {
 
 #definition {
     line-height: 2em;
-    font-family: 'Iansui', 'IansuiPro', 'KaiTi', 'CoolMing', sans-serif;
+    font-family: 'Iansui', var(--HeiTi), var(--KaiTi), 'CoolMing', sans-serif;
 }
 
 #wordSampleSentence {
@@ -331,13 +334,20 @@ input[type="text"] {
 }
 
 #share-box-link {
-    font-family: monospace;
-    font-size: 0.7em;
+    width: 100%;
+    background: none;
+    border: none;
+    font-family: 'Noto Sans Mono', var(--HeiTi), monospace;
     padding: 10px;
+    cursor: inherit;
 }
 
+    #share-box-link:empty {
+        display: none;
+    }
+
 #share-box-text {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--HeiTi);
     font-size: 0.5em;
     text-align: right;
     background: #f9ecdf;
@@ -345,13 +355,17 @@ input[type="text"] {
     color: #817567;
 }
 
+    #share-box-text:empty {
+        display: none;
+    }
+
 #back-to-main {
     display: inline-block;
     padding: 10px;
     max-width: 30px;
     background-color: indianred;
     color: #f6f3ed;
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--HeiTi);
     line-height: 1em;
     align-content: center;
     text-align: center;
@@ -362,7 +376,6 @@ input[type="text"] {
     #back-to-main:hover {
         background-color: peru;
     }
-
 
 @media only screen and (max-width: 600px) {
     ruby rt {
