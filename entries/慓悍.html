@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>慓悍｜燭字典</title>
     <meta name="description" content="或為「剽悍、驃悍」。">
-    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Zutek3134/zutek3134.github.io/gh-pages/images/zeeb.png">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div id="standaloneContainer">
-<a href="/?word=慓悍" id="back-to-main">回首頁</a>
+<a href="/?word=慓悍" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
                 <h1 class="word-title" id="wordTitle"><ruby><rb>慓</rb><rt>ㄆㄧㄠˋ</rt></ruby><ruby><rb>悍</rb><rt>ㄏㄢˋ</rt></ruby></h1>
                 <div class="word-info aliases">
-                    <span id="aliases-icon">或</span>
+                    <span id="aliasesIcon">或</span>
                     <span id="aliases">剽悍、驃悍</span>
                 </div>
                 <div class="word-info" style="display: flex;">
@@ -28,5 +28,18 @@
             </div>
         </div>
     </div>
+<script>
+        window.onload = function () {
+            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+            if (savedFont) {
+                document.body.style.fontFamily = `var(--${savedFont})`;
+            }
+
+            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+            if (savedSize) {
+                document.body.style.fontSize = `var(--FontSize${savedSize})`;
+            }
+        };
+</script>
 </body>
 </html>

@@ -4,52 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>燭字典，逐字逐句點</title>
-    <meta name="description" content="燭字典，受教育部異形詞手冊啟發。查詢經常搞混的字詞，輕鬆辨析正確用字。">
-    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Zutek3134/zutek3134.github.io/gh-pages/images/zeeb.png">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="燭字典。查詢經常搞混的字詞，輕鬆辨析正確用字。">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
+    <link rel="stylesheet" href="style.css?v=69">
     <!--<script src="https://emoji.fluent-cdn.com/latest/fluentemoji.min.js" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
 </head>
 <body>
     <div id="container">
+        <div id="header">
+            <button onclick="goToAbout()">
+                <img src="images/zeeb.png" draggable="false">
+                首頁
+            </button>
+            <button id="openSettingsBtn">
+                <span class="material-symbols-rounded">settings</span>
+                設定
+            </button>
+            <button onclick="displayRandomEntry()">
+                <span class="material-symbols-rounded">casino</span>
+                緣分
+            </button>
+        </div>
         <div id="searchSection">
             <input type="text" id="word" oninput="showSuggestions()"><br>
             <div id="list-scroll"><div id="autocomplete-list" class="autocomplete-suggestions"></div></div>
         </div>
-
         <div id="resultSection">
-            <div class="word-page" id="searchPage" style="display: none;">
-                <h1 class="word-title" id="wordTitle"></h1>
-                <div class="word-info aliases">
-                    <span id="aliases-icon">或</span>
+            <div class="word-page" id="searchPage" style="display: block;">
+                <h1 class="word-title" id="wordTitle"><ruby><rb>燭</rb><rt>ㄓㄨˊ</rt></ruby><ruby><rb>字</rb><rt>ㄗˋ</rt></ruby><ruby><rb>典</rb><rt>ㄉㄧㄢˇ</rt></ruby></h1>
+                <div class="word-info aliases" style="display: none;">
+                    <span id="aliasesIcon">或</span>
                     <span id="aliases"></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"></div>
+                    <div id="definition">
+                        <p style="text-indent: 2em; margin-top: 0;">
+                            「無遠弗屆，天涯若比鄰」即是當今科技發展下之網路社會，「傳訊息」乃眾人之必備技能。線下輷輷殷殷，線上車水馬龍。無論偏好注音輸入法、漢語拼音、華通拼音、五筆、九鍵⋯⋯每秒被發送的廿四萬則訊息中，一定有人被「選字」困擾過。「這兩個字有什麼差別」、「鍵盤都先推薦我這個」等理由均因華語一詞多形的特質，此等詞彙口語中無差別，通常顯現於文字中。
+                        </p>
+                        <p style="text-indent: 2em; margin-top: 0;">
+                            本典即旨於協助辨析常混用字詞，讓不願混用國字之人有一處圭臬可循。所推之字僅為參考，使用者閱讀釋義後自行決定是否同意並用之。選用推薦詞形通常包含但不限於以下幾點：
+                        </p>
+                        <p style="text-indent: 0em; margin-top: 0;">
+                            一、分化字分擔詞義，若分化字可有效承擔本字詞義，其部首又能達到提示作用或統一，取之；
+                        </p>
+                        <p style="text-indent: 0em; margin-top: 0;">
+                            二、本義引申新義，若二字存在差距，今卻常混用，則取本義更貼近詞義者；
+                        </p>
+                        <p style="text-indent: 0em; margin-top: 0;">
+                            三、易於通曉，若二字同義，且一字較另一字更常見，取之；
+                        </p>
+                        <p style="text-indent: 0em; margin-top: 0;">
+                            四、符合我國標準，若二字其一並非我國標準用字，捨之。
+                        </p>
+                        <p style="text-indent: 2em; margin-top: 0;">
+                            語言是與時俱進的，的確屬實，無可否認。然此並非大眾大肆通同、誤用、不選字之理，更非詆譭、蔑視標準或規範之由；經常出現使用正字、發音正確，卻被「看得懂就好」的人嘲笑，以「大家都這麼用」為正，是否為一種三人成虎、以訛傳訛？
+                        </p>
+                        <p style="text-indent: 2em; margin-top: 0;">
+                            人工智慧時代，簡體中文文本充斥著各大平臺。縱使支援正體中文，卻皆為簡化字直接生轉正字。<span id="book">燭字典</span>望可為正體中文錯別字黑暗時期之光源，使用本典，告別別字，辨析自然清楚。此即，秉<span id="book">燭</span>頁遊，<span id="book">燭</span>自清。
+                        </p>
+                    </div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
                 </div>
             </div>
             <div class="word-info" id="share-box">
-                <input id="share-box-link" type="url" readonly>
-                <div id="share-box-text"></div>
+                <input id="share-box-link" type="url" readonly="" value="https://dict.zutek3134.taipei">
+                <div id="share-box-text">點擊複製網址</div>
             </div>
         </div>
     </div>
-    <div class="previewCard">
-        <img src="" class="card-img-top" />
-        <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text"></p>
+
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <h2>設定</h2>
+            <div class="font-selection">
+                <!--<label for="fontSelect">字體</label>-->
+                <select id="fontSelect">
+                    <option value="KaiTi" selected>楷體</option>
+                    <option value="HeiTi">黑體</option>
+                    <option value="MingTi">明體</option>
+                    <option value="Iansui">芫荽</option>
+                </select>
+            </div>
+            <div class="size-selection">
+                <!--<label for="sizeSelect">大小</label>-->
+                <select id="sizeSelect">
+                    <option value="Smaller">小字</option>
+                    <option value="Default" selected>中字</option>
+                    <option value="Bigger">大字</option>
+                </select>
+            </div>
         </div>
     </div>
 
     <script>// hi
+        const textareaForCopyURL = document.getElementById('share-box-link');
+        const copyUrlDesc = document.getElementById('share-box-text');
+        document.getElementById('share-box').addEventListener('click', () => {
+            textareaForCopyURL.select();
+            try {
+                document.execCommand('copy');
+                copyUrlDesc.innerHTML = '複製成功，分享出去吧';
+            }
+            catch (err) {
+                copyUrlDesc.innerHTML = '複製失敗⋯⋯「' + err + '」';
+            }
+        });
+
         let dictionary = {};
 
         function loadDictionary() {
-            fetch('entries.json')
+            fetch('entries.json?v=6')
                 .then(response => response.json())
                 .then(data => {
                     dictionary = data;
@@ -59,7 +127,10 @@
                     const word = urlParams.get('word');
 
                     if (word) search(word);
-                    else displayRandomEntry();
+                    else {
+                        document.getElementById('resultSection').classList.add('in');
+                        textareaForCopyURL.value = window.location.href;
+                    }
                 })
                 .catch(error => console.error('Error loading dictionary:', error));
         }
@@ -240,89 +311,140 @@
         }
 
         function search(word) {
-            const entry = findEntry(word);
-            if (entry) {
-                const newUrl = `${window.location.pathname}?word=${encodeURIComponent(word)}`;
-                window.history.replaceState({}, '', newUrl);
+            const animationDiv = document.getElementById('resultSection');
+            animationDiv.classList.remove('in');
+            animationDiv.classList.add('out');
 
-                const wordTitle = document.getElementById('wordTitle');
-                wordTitle.innerHTML = '';
+            setTimeout(() => {
+                const entry = findEntry(word);
+                if (entry) {
+                    const newUrl = `${window.location.pathname}?word=${encodeURIComponent(word)}`;
+                    window.history.replaceState({}, '', newUrl);
 
-                const titleWord = Object.keys(dictionary).find(key => dictionary[key] === entry);
+                    const wordTitle = document.getElementById('wordTitle');
+                    wordTitle.innerHTML = '';
 
-                for (let i = 0; i < titleWord.length; i++) {
-                    const rubyTag = document.createElement('ruby');
-                    const rbTag = document.createElement('rb');
-                    const rtTag = document.createElement('rt');
-                    rbTag.textContent = titleWord[i];
+                    const titleWord = Object.keys(dictionary).find(key => dictionary[key] === entry);
 
-                    if (entry.pronunciation[i].startsWith('˙')) {
-                        const rtDot = document.createElement('span');
-                        rtDot.classList.add('ruby-tmdot');
-                        rtDot.textContent = '˙';
-                        rtTag.appendChild(rtDot);
-                        const pronunciationText = document.createTextNode(entry.pronunciation[i].slice(1) || '');
-                        rtTag.appendChild(pronunciationText);
+                    for (let i = 0; i < titleWord.length; i++) {
+                        const rubyTag = document.createElement('ruby');
+                        const rbTag = document.createElement('rb');
+                        const rtTag = document.createElement('rt');
+                        rbTag.textContent = titleWord[i];
+
+                        if (entry.pronunciation[i].startsWith('˙')) {
+                            const rtDot = document.createElement('span');
+                            rtDot.classList.add('ruby-tmdot');
+                            rtDot.textContent = '˙';
+                            rtTag.appendChild(rtDot);
+                            const pronunciationText = document.createTextNode(entry.pronunciation[i].slice(1) || '');
+                            rtTag.appendChild(pronunciationText);
+                        }
+                        else {
+                            const pronunciationText = document.createTextNode(entry.pronunciation[i] || '');
+                            rtTag.appendChild(pronunciationText);
+                        }
+
+                        rubyTag.appendChild(rbTag);
+                        rubyTag.appendChild(rtTag);
+                        wordTitle.appendChild(rubyTag);
                     }
-                    else {
-                        const pronunciationText = document.createTextNode(entry.pronunciation[i] || '');
-                        rtTag.appendChild(pronunciationText);
+
+                    const aliasesDiv = document.querySelector('.word-info.aliases');
+                    if (entry.aliases && entry.aliases.length > 0) {
+                        const aliasesText = entry.aliases.join('、');
+                        document.getElementById('aliases').textContent = aliasesText;
+                        aliasesDiv.style.display = 'block';
+                    } else {
+                        aliasesDiv.style.display = 'none';
                     }
 
-                    rubyTag.appendChild(rbTag);
-                    rubyTag.appendChild(rtTag);
-                    wordTitle.appendChild(rubyTag);
-                }
+                    if (entry.partOfSpeech) document.getElementById('wordPartOfSpeech').textContent = entry.partOfSpeech;
 
-                const aliasesDiv = document.querySelector('.word-info.aliases');
-                if (entry.aliases && entry.aliases.length > 0) {
-                    const aliasesText = entry.aliases.join('、');
-                    document.getElementById('aliases').textContent = aliasesText;
-                    aliasesDiv.style.display = 'block';
+                    const wordDefinition = document.getElementById('definition');
+                    wordDefinition.innerHTML = replaceBookPunctuation(entry.definition).replace(/\[(.*?)\]/g, (match, innerWord) => {
+                        return `<a href="#" data-word="${innerWord}">${innerWord}</a>`;
+                    });
+
+                    const wordSampleSentence = document.getElementById('wordSampleSentence');
+                    wordSampleSentence.innerHTML = replaceBookPunctuation(entry.sampleSentence).replace(/\[(.*?)\]/g, (match, innerWord) => {
+                        return `<a href="#" data-word="${innerWord}">${innerWord}</a>`;
+                    });
+
+                    const url = window.location.href.split('?')[0] + 'entries/' + titleWord + (window.location.href.includes('dict') ? '' : '.html');
+                    textareaForCopyURL.value = url;
+
+                    copyUrlDesc.innerHTML = '點擊複製網址';
+
+                    addLink(wordSampleSentence.querySelectorAll('a'));
+                    addLink(wordDefinition.querySelectorAll('a'));
+
+                    document.getElementById('searchPage').style.display = 'block';
                 } else {
-                    aliasesDiv.style.display = 'none';
+                    alert('該字詞尚未收錄！');
                 }
 
-                if (entry.partOfSpeech) document.getElementById('wordPartOfSpeech').textContent = entry.partOfSpeech;
-
-                const wordDefinition = document.getElementById('definition');
-                wordDefinition.innerHTML = replaceBookPunctuation(entry.definition).replace(/\[(.*?)\]/g, (match, innerWord) => {
-                    return `<a href="#" data-word="${innerWord}">${innerWord}</a>`;
-                });
-
-                const wordSampleSentence = document.getElementById('wordSampleSentence');
-                wordSampleSentence.innerHTML = replaceBookPunctuation(entry.sampleSentence).replace(/\[(.*?)\]/g, (match, innerWord) => {
-                    return `<a href="#" data-word="${innerWord}">${innerWord}</a>`;
-                });
-
-                let url = window.location.href.split('?')[0] + 'entries/' + titleWord;
-                url += url.includes('dict') ? '' : '.html';
-                textareaForCopyURL.innerHTML = url;
-                textareaForCopyURL.value = url;
-                copyUrlDesc.innerHTML = '點擊複製網址';
-
-                document.getElementById('share-box').addEventListener('click', () => {
-                    try {
-                        textareaForCopyURL.select();
-                        document.execCommand('copy');
-                        copyUrlDesc.innerHTML = '複製成功，分享出去吧';
-                    }
-                    catch (err) {
-                        copyUrlDesc.innerHTML = '複製失敗⋯⋯「' + err + '」';
-                    }
-                });
-
-                addLink(wordSampleSentence.querySelectorAll('a'));
-                addLink(wordDefinition.querySelectorAll('a'));
-
-                document.getElementById('searchPage').style.display = 'block';
-            } else {
-                alert('該字詞尚未收錄！');
-            }
+                animationDiv.classList.remove('out');
+                animationDiv.classList.add('in');
+            }, 200);
         }
 
-        const textareaForCopyURL = document.getElementById('share-box-link');
-        const copyUrlDesc = document.getElementById('share-box-text');
-        window.onload = loadDictionary;</script>
+        function goToAbout() {
+            const newUrl = window.location.pathname;
+            window.history.replaceState({}, '', newUrl);
+            location.reload();
+        }
+
+        window.onload = function () {
+            loadDictionary();
+
+            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+            if (savedFont) {
+                document.body.style.fontFamily = `var(--${savedFont})`;
+                document.querySelector(`#fontSelect option[value="${savedFont}"]`).selected = true;
+            }
+
+            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+            if (savedSize) {
+                document.body.style.fontSize = `var(--FontSize${savedSize})`;
+                document.querySelector(`#sizeSelect option[value="${savedSize}"]`).selected = true;
+            }
+        };
+
+        const root = getComputedStyle(document.querySelector(':root'));
+        const modalBg = document.querySelector('.modal');
+        const modal = document.getElementById('settingsModal');
+        const openModalBtn = document.getElementById('openSettingsBtn');
+        const fontSelect = document.getElementById('fontSelect');
+        const sizeSelect = document.getElementById('sizeSelect');
+
+        openModalBtn.addEventListener('click', () => {
+            modalBg.classList.remove('out');
+            modal.style.display = 'block';
+
+            setTimeout(() => {
+                modalBg.classList.add('in');
+            }, 10);
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modalBg.classList.remove('in');
+                modalBg.classList.add('out');
+
+                setTimeout(() => { modal.style.display = 'none'; }, 500);
+            }
+        });
+
+        fontSelect.addEventListener('change', () => {
+            document.body.style.fontFamily = `var(--${fontSelect.value})`;
+            localStorage.setItem('JhuZihDien-SelectedFont', fontSelect.value);
+        });
+
+        sizeSelect.addEventListener('change', () => {
+            document.body.style.fontSize = `var(--FontSize${sizeSelect.value})`;
+            localStorage.setItem('JhuZihDien-SelectedSize', sizeSelect.value);
+        });
+</script>
 </body>
 </html>

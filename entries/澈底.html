@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澈底｜燭字典</title>
+    <meta name="description" content="或為「徹底」。">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="standaloneContainer">
+<a href="/?word=澈底" id="back-to-main">回詞條</a>
+        <div id="standaloneResultSection">
+            <div class="word-page">
+                <h1 class="word-title" id="wordTitle"><ruby><rb>澈</rb><rt>ㄔㄜˋ</rt></ruby><ruby><rb>底</rb><rt>ㄉㄧˇ</rt></ruby></h1>
+                <div class="word-info aliases">
+                    <span id="aliasesIcon">或</span>
+                    <span id="aliases">徹底</span>
+                </div>
+                <div class="word-info" style="display: flex;">
+                    <span id="wordPartOfSpeech"></span>
+                    <div id="definition">「澈」及「徹」指穿透、貫通時互通，「澈」另指清澈。雖然彳部「徹」較水部「澈」更早出現，然我國<span id='book'>法律統一用字表</span>中以「澈底」為規範詞形，故宜用之。</div>
+                </div>
+                <div class="word-info">
+                    <div id="wordSampleSentence"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+        window.onload = function () {
+            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+            if (savedFont) {
+                document.body.style.fontFamily = `var(--${savedFont})`;
+            }
+
+            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+            if (savedSize) {
+                document.body.style.fontSize = `var(--FontSize${savedSize})`;
+            }
+        };
+</script>
+</body>
+</html>

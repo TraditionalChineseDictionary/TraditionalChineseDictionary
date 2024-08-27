@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曝晒｜燭字典</title>
+    <meta name="description" content="或為「曝曬、暴曬、暴晒」。">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="standaloneContainer">
+<a href="/?word=曝晒" id="back-to-main">回詞條</a>
+        <div id="standaloneResultSection">
+            <div class="word-page">
+                <h1 class="word-title" id="wordTitle"><ruby><rb>曝</rb><rt>ㄆㄨˋ</rt></ruby><ruby><rb>晒</rb><rt>ㄕㄞˋ</rt></ruby></h1>
+                <div class="word-info aliases">
+                    <span id="aliasesIcon">或</span>
+                    <span id="aliases">曝曬、暴曬、暴晒</span>
+                </div>
+                <div class="word-info" style="display: flex;">
+                    <span id="wordPartOfSpeech"></span>
+                    <div id="definition">「曝」為「暴」之分化後起字，專指晒於陽光下；本字「暴」原音「<ruby>暴<rt>ㄆㄨˋ</rt></ruby>」，本為雙手捧物曝晒於日下之會意字，衍伸為顯露（暴露），後破音「<ruby>暴<rt>ㄅㄠˋ</rt></ruby>」，指搏鬥（暴虎馮河）、蹧蹋（暴殄天物）、鼓起（暴青筋）、凶惡（殘暴）、急驟（暴飲暴食），故當使用「晒」義時以日部分化字「曝」為佳。至於「晒」，<span id='book'>說文解字</span>及多數古韻書以其為「曬」之異體，惟教育部標準字體卻視其為正字，故今反以「曬」為「晒」之異體，與大陸地區及日本標準一致。</div>
+                </div>
+                <div class="word-info">
+                    <div id="wordSampleSentence"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+        window.onload = function () {
+            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+            if (savedFont) {
+                document.body.style.fontFamily = `var(--${savedFont})`;
+            }
+
+            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+            if (savedSize) {
+                document.body.style.fontSize = `var(--FontSize${savedSize})`;
+            }
+        };
+</script>
+</body>
+</html>

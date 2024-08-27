@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>週末｜燭字典</title>
     <meta name="description" content="或為「周末」。">
-    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Zutek3134/zutek3134.github.io/gh-pages/images/zeeb.png">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div id="standaloneContainer">
-<a href="/?word=週末" id="back-to-main">回首頁</a>
+<a href="/?word=週末" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
                 <h1 class="word-title" id="wordTitle"><ruby><rb>週</rb><rt>ㄓㄡ</rt></ruby><ruby><rb>末</rb><rt>ㄇㄛˋ</rt></ruby></h1>
                 <div class="word-info aliases">
-                    <span id="aliases-icon">或</span>
+                    <span id="aliasesIcon">或</span>
                     <span id="aliases">周末</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">探討本義，「週」原指<a href="/?word=迴">迴</a>、環、繞，又有運行一遍、期滿之義，後亦用為計算時間之單位，指一星期；「周」指縝密，後與「週」同義。今傾向分用二字，使用本義。「週」與循環有關，如「週期」、「週旋」、「週年」、「週歲」、「週而復始」，故「週末」使用此字；而「周」，參見「<a href="/?word=周長">周長</a>」。</div>
+                    <div id="definition">探討本義，「週」原指<a href="/?word=迴">迴</a>、環、繞，又有運行一遍、期滿之義，後亦用為計算時間之單位，指一星期；「周」指縝密，後與「週」同義。今傾向分用二字，使用本義。「週」與循環有關，如「週期」、「週旋」、「週年」、「週歲」、「週而復始」、「抓週」，故「週末」使用此字；而「周」，參見「<a href="/?word=周邊">周邊</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -28,5 +28,18 @@
             </div>
         </div>
     </div>
+<script>
+        window.onload = function () {
+            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+            if (savedFont) {
+                document.body.style.fontFamily = `var(--${savedFont})`;
+            }
+
+            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+            if (savedSize) {
+                document.body.style.fontSize = `var(--FontSize${savedSize})`;
+            }
+        };
+</script>
 </body>
 </html>

@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>宏亮｜燭字典</title>
     <meta name="description" content="或為「洪亮」。">
-    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Zutek3134/zutek3134.github.io/gh-pages/images/zeeb.png">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div id="standaloneContainer">
-<a href="/?word=宏亮" id="back-to-main">回首頁</a>
+<a href="/?word=宏亮" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
                 <h1 class="word-title" id="wordTitle"><ruby><rb>宏</rb><rt>ㄏㄨㄥˊ</rt></ruby><ruby><rb>亮</rb><rt>ㄌㄧㄤˋ</rt></ruby></h1>
                 <div class="word-info aliases">
-                    <span id="aliases-icon">或</span>
+                    <span id="aliasesIcon">或</span>
                     <span id="aliases">洪亮</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">教育部辭典「宏」有聲音響亮之義，「洪」則無，僅大水之義，故用「宏」。亦可參「<a href="/?word=弘揚">弘揚</a>」、「<a href="/?word=宏圖">宏圖</a>」。</div>
+                    <div id="definition">教育部辭典「宏」有聲音響亮之義，「洪」則無，僅指大水，故用「宏」。亦可參「<a href="/?word=弘揚">弘揚</a>」、「<a href="/?word=宏圖">宏圖</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -28,5 +28,18 @@
             </div>
         </div>
     </div>
+<script>
+        window.onload = function () {
+            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+            if (savedFont) {
+                document.body.style.fontFamily = `var(--${savedFont})`;
+            }
+
+            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+            if (savedSize) {
+                document.body.style.fontSize = `var(--FontSize${savedSize})`;
+            }
+        };
+</script>
 </body>
 </html>

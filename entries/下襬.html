@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下襬｜燭字典</title>
+    <meta name="description" content="或為「下擺」。">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="standaloneContainer">
+<a href="/?word=下襬" id="back-to-main">回詞條</a>
+        <div id="standaloneResultSection">
+            <div class="word-page">
+                <h1 class="word-title" id="wordTitle"><ruby><rb>下</rb><rt>ㄒㄧㄚˋ</rt></ruby><ruby><rb>襬</rb><rt>ㄅㄞˇ</rt></ruby></h1>
+                <div class="word-info aliases">
+                    <span id="aliasesIcon">或</span>
+                    <span id="aliases">下擺</span>
+                </div>
+                <div class="word-info" style="display: flex;">
+                    <span id="wordPartOfSpeech"></span>
+                    <div id="definition">「襬」原音「<ruby>襬<rt>ㄅㄟ</rt></ruby>」，指裙子；又音「<ruby>襬<rt>ㄅㄞˇ</rt></ruby>」，為上衣、長袍、裙子等下緣部分。今普遍使用此義，且部首可提示詞義，故推薦之。「裙襬」、「前襬」、「後襬」等亦然。另可見「<a href="/?word=皺褶">皺褶</a>」。</div>
+                </div>
+                <div class="word-info">
+                    <div id="wordSampleSentence"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+        window.onload = function () {
+            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+            if (savedFont) {
+                document.body.style.fontFamily = `var(--${savedFont})`;
+            }
+
+            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+            if (savedSize) {
+                document.body.style.fontSize = `var(--FontSize${savedSize})`;
+            }
+        };
+</script>
+</body>
+</html>

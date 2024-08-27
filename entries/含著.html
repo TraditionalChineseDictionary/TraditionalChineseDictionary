@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>含著｜燭字典</title>
+    <meta name="description" content="或為「唅著」。">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="standaloneContainer">
+<a href="/?word=含著" id="back-to-main">回詞條</a>
+        <div id="standaloneResultSection">
+            <div class="word-page">
+                <h1 class="word-title" id="wordTitle"><ruby><rb>含</rb><rt>ㄏㄢˊ</rt></ruby><ruby><rb>著</rb><rt>˙ㄓㄜ</rt></ruby></h1>
+                <div class="word-info aliases">
+                    <span id="aliasesIcon">或</span>
+                    <span id="aliases">唅著</span>
+                </div>
+                <div class="word-info" style="display: flex;">
+                    <span id="wordPartOfSpeech"></span>
+                    <div id="definition">嘴裡銜著食物時，或許傾向使用口部「唅」，惟此字於教育部辭典中讀音為一聲「<ruby>唅<rt>ㄏㄢ</rt></ruby>」，故不宜使用，應皆以「含」為主。</div>
+                </div>
+                <div class="word-info">
+                    <div id="wordSampleSentence"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+        window.onload = function () {
+            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+            if (savedFont) {
+                document.body.style.fontFamily = `var(--${savedFont})`;
+            }
+
+            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+            if (savedSize) {
+                document.body.style.fontSize = `var(--FontSize${savedSize})`;
+            }
+        };
+</script>
+</body>
+</html>

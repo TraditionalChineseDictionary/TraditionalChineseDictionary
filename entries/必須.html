@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>必須｜燭字典</title>
+    <meta name="description" content="或為「必需、須」。">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="standaloneContainer">
+<a href="/?word=必須" id="back-to-main">回詞條</a>
+        <div id="standaloneResultSection">
+            <div class="word-page">
+                <h1 class="word-title" id="wordTitle"><ruby><rb>必</rb><rt>ㄅㄧˋ</rt></ruby><ruby><rb>須</rb><rt>ㄒㄩ</rt></ruby></h1>
+                <div class="word-info aliases">
+                    <span id="aliasesIcon">或</span>
+                    <span id="aliases">必需、須</span>
+                </div>
+                <div class="word-info" style="display: flex;">
+                    <span id="wordPartOfSpeech"></span>
+                    <div id="definition">「須」及「需」音同義不同，「須」指應當，類似英文「must」；「需」指有所欲求，類似英文「need」。由上可知，用字不同，意義即不同。二字分不清楚時，通常「須」為副詞，後接動詞，如「須憑票根入場」或「須自備鉛筆、橡皮擦」，較有命令感。另見「<a href="/?word=需要">需要</a>」。</div>
+                </div>
+                <div class="word-info">
+                    <div id="wordSampleSentence"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+        window.onload = function () {
+            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+            if (savedFont) {
+                document.body.style.fontFamily = `var(--${savedFont})`;
+            }
+
+            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+            if (savedSize) {
+                document.body.style.fontSize = `var(--FontSize${savedSize})`;
+            }
+        };
+</script>
+</body>
+</html>
