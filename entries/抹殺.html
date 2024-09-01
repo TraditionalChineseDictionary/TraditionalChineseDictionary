@@ -13,14 +13,14 @@
 <a href="/?word=抹殺" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>抹</rb><rt>ㄇㄛˇ</rt></ruby><ruby><rb>殺</rb><rt>ㄕㄚ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>抹</rb><rt>ㄇㄛˇ</rt></ruby><ruby><rb><mark>殺</mark></rb><rt>ㄕㄚ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">抹煞</span>
+                    <span id="aliases">抹<mark>煞</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">勾消、掩滅。<span id='book'>說文解字</span>中，「殺」本義為殺戮，後來引申為去除、消滅；「煞」則未收錄，後世均視為「殺」之俗字，因此繼承其義。惟今四聲「<ruby>煞<rt>ㄕㄚˋ</rt></ruby>」多用於<a href="/?word=凶神">凶神</a>，如「<a href="/?word=凶煞">凶煞</a>」、「惡煞」；最高級，如「煞費苦心」；一聲「<ruby>煞<rt>ㄕㄚ</rt></ruby>」僅用於「煞車」。是以推薦「抹殺」。</div>
+                    <div id="definition">勾消、掩滅。<span id='book'>說文解字</span>中，「<mark>殺</mark>」本義為<mark>殺</mark>戮，後來引申為去除、消滅；「<mark>煞</mark>」則未收錄，後世均視為「<mark>殺</mark>」之俗字，因此繼承其義。惟今四聲「<ruby><mark>煞</mark><rt>ㄕㄚˋ</rt></ruby>」多用於<a href="/?word=凶神">凶神</a>，如「<a href="/?word=凶煞">凶煞</a>」、「惡<mark>煞</mark>」；最高級，如「<mark>煞</mark>費苦心」；一聲「<ruby><mark>煞</mark><rt>ㄕㄚ</rt></ruby>」僅用於「<mark>煞</mark>車」。是以推薦「抹<mark>殺</mark>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

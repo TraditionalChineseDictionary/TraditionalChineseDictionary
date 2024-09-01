@@ -13,14 +13,14 @@
 <a href="/?word=布" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>布</rb><rt>ㄅㄨˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>布</mark></rb><rt>ㄅㄨˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">佈</span>
+                    <span id="aliases"><mark>佈</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「布」、「佈」皆有宣告、設置、分散之義。「布」本義指麻、棉等織品，後作陳設、散；而人部「佈」未見於<span id='book'>說文解字</span>，且於教育部辭典中幾近全部釋義均通於「布」，二字差別曖昧不清、難以劃分，又「布」更是我國<span id='book'>法律統一用字表</span>規範用字，是以推薦使用「布」。「布防」、「布景」、「布局」、「布線」、「布陣」、「布樁」、「布滿」、「遍布」、「滿布」、「密布」、「流布」、「廣布」、「傳布」、「散布」⋯⋯亦復如是，基本不建議書寫人部「佈」字。</div>
+                    <div id="definition">「<mark>布</mark>」、「<mark>佈</mark>」皆有宣告、設置、分散之義。「<mark>布</mark>」本義指麻、棉等織品，後作陳設、散；而人部「<mark>佈</mark>」未見於<span id='book'>說文解字</span>，且於教育部辭典中幾近全部釋義均通於「<mark>布</mark>」，二字差別曖昧不清、難以劃分，又「<mark>布</mark>」更是我國<span id='book'>法律統一用字表</span>規範用字，是以推薦使用「<mark>布</mark>」。「<mark>布</mark>防」、「<mark>布</mark>景」、「<mark>布</mark>局」、「<mark>布</mark>線」、「<mark>布</mark>陣」、「<mark>布</mark>樁」、「<mark>布</mark>滿」、「遍<mark>布</mark>」、「滿<mark>布</mark>」、「密<mark>布</mark>」、「流<mark>布</mark>」、「廣<mark>布</mark>」、「傳<mark>布</mark>」、「散<mark>布</mark>」⋯⋯亦復如是，基本不建議書寫人部「<mark>佈</mark>」字。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

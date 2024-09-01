@@ -13,14 +13,14 @@
 <a href="/?word=關聯" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>關</rb><rt>ㄍㄨㄢ</rt></ruby><ruby><rb>聯</rb><rt>ㄌㄧㄢˊ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>關</rb><rt>ㄍㄨㄢ</rt></ruby><ruby><rb><mark>聯</mark></rb><rt>ㄌㄧㄢˊ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">關連</span>
+                    <span id="aliases">關<mark>連</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><span id='book'>說文解字</span>中，「聯」本義為連接、接續；「連」則為負車，即古代以人力牽引、拉動車輛，後引申有接合、相接之義。今二字用法略有區別，相接關係明確對等並列時用「聯」，「並聯」、「聯手」、「聯袂」、「聯絡」、「聯繫」、「串聯」⋯⋯等亦復如是；相接關係為線性不對等時參見「<a href="/?word=連結">連結</a>」。</div>
+                    <div id="definition"><span id='book'>說文解字</span>中，「<mark>聯</mark>」本義為<mark>連</mark>接、接續；「<mark>連</mark>」則為負車，即古代以人力牽引、拉動車輛，後引申有接合、相接之義。今二字用法略有區別，相接關係明確對等並列時用「<mark>聯</mark>」，「並<mark>聯</mark>」、「<mark>聯</mark>手」、「<mark>聯</mark>袂」、「<mark>聯</mark>絡」、「<mark>聯</mark>繫」、「串<mark>聯</mark>」⋯⋯等亦復如是；相接關係為線性不對等時參見「<a href="/?word=連結">連結</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

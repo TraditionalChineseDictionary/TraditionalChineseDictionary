@@ -13,14 +13,14 @@
 <a href="/?word=疾行" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>疾</rb><rt>ㄐㄧˊ</rt></ruby><ruby><rb>行</rb><rt>ㄒㄧㄥˊ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>疾</mark></rb><rt>ㄐㄧˊ</rt></ruby><ruby><rb>行</rb><rt>ㄒㄧㄥˊ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">急行</span>
+                    <span id="aliases"><mark>急</mark>行</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「疾」本義為病，後可作快速、猛烈；「急」本義為暴躁、沒耐心，後引申出亟待解決、迅速。今「急」用法偏向負面，如「急性子」、「著急」、「急性病」、「告急」；「疾」用於快速時偏向中立，如「疾風」、「疾馳」。故「疾行」亦用此字。</div>
+                    <div id="definition">「<mark>疾</mark>」本義為病，後可作快速、猛烈；「<mark>急</mark>」本義為暴躁、沒耐心，後引申出亟待解決、迅速。今「<mark>急</mark>」用法偏向負面，如「<mark>急</mark>性子」、「著<mark>急</mark>」、「<mark>急</mark>性病」、「告<mark>急</mark>」；「<mark>疾</mark>」用於快速時偏向中立，如「<mark>疾</mark>風」、「<mark>疾</mark>馳」。故「<mark>疾</mark>行」亦用此字。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

@@ -13,14 +13,14 @@
 <a href="/?word=甘休" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>甘</rb><rt>ㄍㄢ</rt></ruby><ruby><rb>休</rb><rt>ㄒㄧㄡ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>甘</mark></rb><rt>ㄍㄢ</rt></ruby><ruby><rb>休</rb><rt>ㄒㄧㄡ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">干休</span>
+                    <span id="aliases"><mark>干</mark>休</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><span id='book'>說文解字</span>中，「甘」指甜美，後有情願、自願之義；「干」釋為冒犯、觸犯，後有干涉之義。「干休」為受干涉而停止，若強調甘願、甘心放棄時，宜使用「甘休」。</div>
+                    <div id="definition"><span id='book'>說文解字</span>中，「<mark>甘</mark>」指甜美，後有情願、自願之義；「<mark>干</mark>」釋為冒犯、觸犯，後有<mark>干</mark>涉之義。「<mark>干</mark>休」為受<mark>干</mark>涉而停止，若強調<mark>甘</mark>願、<mark>甘</mark>心放棄時，宜使用「<mark>甘</mark>休」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

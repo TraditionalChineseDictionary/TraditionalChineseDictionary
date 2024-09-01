@@ -13,14 +13,14 @@
 <a href="/?word=保鏢" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>保</rb><rt>ㄅㄠˇ</rt></ruby><ruby><rb>鏢</rb><rt>ㄅㄧㄠ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>保</rb><rt>ㄅㄠˇ</rt></ruby><ruby><rb><mark>鏢</mark></rb><rt>ㄅㄧㄠ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">保鑣</span>
+                    <span id="aliases">保<mark>鑣</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><span id='book'>說文解字</span>中，「鏢」本義為刀鞘末端銅製之裝飾物，引申為兵器，後指以武技保護的人或物；「鑣」則為馬口中所含的鐵環，引申為馬、坐騎。雖後亦衍伸為以武技保護的人或物，惟此義罕用，且「鏢客」、「鏢局」、「走鏢」多用「鏢」字，是故宜用「保鏢」。</div>
+                    <div id="definition"><span id='book'>說文解字</span>中，「<mark>鏢</mark>」本義為刀鞘末端銅製之裝飾物，引申為兵器，後指以武技保護的人或物；「<mark>鑣</mark>」則為馬口中所含的鐵環，引申為馬、坐騎。雖後亦衍伸為以武技保護的人或物，惟此義罕用，且「<mark>鏢</mark>客」、「<mark>鏢</mark>局」、「走<mark>鏢</mark>」多用「<mark>鏢</mark>」字，是故宜用「保<mark>鏢</mark>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

@@ -13,14 +13,14 @@
 <a href="/?word=兇器" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>兇</rb><rt>ㄒㄩㄥ</rt></ruby><ruby><rb>器</rb><rt>ㄑㄧˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>兇</mark></rb><rt>ㄒㄩㄥ</rt></ruby><ruby><rb>器</rb><rt>ㄑㄧˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">凶器</span>
+                    <span id="aliases"><mark>凶</mark>器</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「兇」本義為驚擾、恐懼，後引申為險惡；「凶」則為不吉祥、邪惡的東西，亦引申為險惡。此詞係指傷人或殺人之物，然二字至今均無殺傷害人之義，故僅能就二字本義推測。「兇器」可解釋為令人畏懼的器具，「凶器」則可稱作邪惡或進行不祥之事的器具。「行兇」亦然，可指做令人害怕的事或做邪惡的事。是以若遇某詞可作的令人懼怕或邪惡之義時，二者擇一使用皆可，如「兇嫌／凶嫌」、「兇手／凶手」、「兇案／凶案」。另見「<a href="/?word=凶險">凶險</a>」。</div>
+                    <div id="definition">「<mark>兇</mark>」本義為驚擾、恐懼，後引申為險惡；「<mark>凶</mark>」則為不吉祥、邪惡的東西，亦引申為險惡。此詞係指傷人或殺人之物，然二字至今均無殺傷害人之義，故僅能就二字本義推測。「<mark>兇</mark>器」可解釋為令人畏懼的器具，「<mark>凶</mark>器」則可稱作進行邪惡或不祥之事的器具。「行<mark>兇</mark>」亦然，可指做令人害怕的事或做邪惡的事。是以若遇某詞較難區分，可同時作令人懼怕或邪惡之義，二者擇一使用皆可，如「<mark>兇</mark>嫌／<mark>凶</mark>嫌」、「<mark>兇</mark>手／<mark>凶</mark>手」、「<mark>兇</mark>案／<mark>凶</mark>案」。另見「<a href="/?word=凶險">凶險</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

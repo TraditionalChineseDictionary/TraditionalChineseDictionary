@@ -13,14 +13,14 @@
 <a href="/?word=週末" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>週</rb><rt>ㄓㄡ</rt></ruby><ruby><rb>末</rb><rt>ㄇㄛˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>週</mark></rb><rt>ㄓㄡ</rt></ruby><ruby><rb>末</rb><rt>ㄇㄛˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">周末</span>
+                    <span id="aliases"><mark>周</mark>末</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">探討本義，「週」原指<a href="/?word=迴">迴</a>、環、繞，又有運行一遍、期滿之義，後亦用為計算時間之單位，指一星期；「周」指縝密，後與「週」同義。今傾向分用二字，使用本義。「週」與循環有關，如「週期」、「週旋」、「週年」、「週歲」、「週而復始」、「抓週」，故「週末」使用此字；而「周」，參見「<a href="/?word=周邊">周邊</a>」。</div>
+                    <div id="definition">探討本義，「<mark>週</mark>」原指<a href="/?word=迴">迴</a>、環、繞，又有運行一遍、期滿之義，後亦用為計算時間之單位，指一星期；「<mark>周</mark>」指縝密，後與「<mark>週</mark>」同義。今傾向分用二字，使用本義。「<mark>週</mark>」與循環有關，如「<mark>週</mark>期」、「<mark>週</mark>旋」、「<mark>週</mark>年」、「<mark>週</mark>歲」、「<mark>週</mark>而復始」、「抓<mark>週</mark>」，故「<mark>週</mark>末」使用此字；而「<mark>周</mark>」，參見「<a href="/?word=周邊">周邊</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

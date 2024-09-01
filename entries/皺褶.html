@@ -13,14 +13,14 @@
 <a href="/?word=皺褶" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>皺</rb><rt>ㄓㄡˋ</rt></ruby><ruby><rb>褶</rb><rt>ㄓㄜˊ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>皺</rb><rt>ㄓㄡˋ</rt></ruby><ruby><rb><mark>褶</mark></rb><rt>ㄓㄜˊ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">皺摺</span>
+                    <span id="aliases">皺<mark>摺</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「褶」原音「<ruby>褶<rt>ㄉㄧㄝˊ</rt></ruby>」，指夾衣，中間無綿絮、穿在最外面的雙層衣服；破音「<ruby>褶<rt>ㄒㄧˊ</rt></ruby>」，為「襲」之異體；又音「<ruby>褶<rt>ㄓㄜˊ</rt></ruby>」，指衣裙痕紋。今普遍使用此義，且部首可提示詞義，故推薦之。另可見「<a href="/?word=下襬">下襬</a>」、「<a href="/?word=摺疊">摺疊</a>」。</div>
+                    <div id="definition">「<mark>褶</mark>」原音「<ruby><mark>褶</mark><rt>ㄉㄧㄝˊ</rt></ruby>」，指夾衣，中間無綿絮、穿在最外面的雙層衣服；破音「<ruby><mark>褶</mark><rt>ㄒㄧˊ</rt></ruby>」，為「襲」之異體；又音「<ruby><mark>褶</mark><rt>ㄓㄜˊ</rt></ruby>」，指衣裙痕紋。今普遍使用此義，且部首可提示詞義，故推薦之。另可見「<a href="/?word=下襬">下襬</a>」、「<a href="/?word=摺疊">摺疊</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

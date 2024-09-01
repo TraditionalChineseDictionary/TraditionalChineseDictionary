@@ -13,14 +13,14 @@
 <a href="/?word=火炮" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>火</rb><rt>ㄏㄨㄛˇ</rt></ruby><ruby><rb>炮</rb><rt>ㄆㄠˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>火</rb><rt>ㄏㄨㄛˇ</rt></ruby><ruby><rb><mark>炮</mark></rb><rt>ㄆㄠˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">火砲</span>
+                    <span id="aliases">火<mark>砲</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">二聲「<ruby>炮<rt>ㄆㄠˊ</rt></ruby>」本義為燒、烤，今四聲「<ruby>炮<rt>ㄆㄠˋ</rt></ruby>」多指發射炮彈的武器或炮彈本身。此用法見於<span id='book'>彙音寶鑑</span>，其將火部「炮」解釋為「同砲字，昔用石，今用火也。」今教育部辭典亦將石部「砲」直接列為「同『炮』」，故作武器相關意義時可視偏好擇一使用。<u>宋</u>・<span id='book'>集韻</span>視「砲」同「<ruby>礮<rt>ㄆㄠˋ</rt></ruby>」，然今不推薦使用「礮」。</div>
+                    <div id="definition">二聲「<ruby><mark>炮</mark><rt>ㄆㄠˊ</rt></ruby>」本義為燒、烤，今四聲「<ruby><mark>炮</mark><rt>ㄆㄠˋ</rt></ruby>」多指發射<mark>炮</mark>彈的武器或<mark>炮</mark>彈本身。此用法見於<span id='book'>彙音寶鑑</span>，其將火部「<mark>炮</mark>」解釋為「同<mark>砲</mark>字，昔用石，今用火也。」今教育部辭典亦將石部「<mark>砲</mark>」直接列為「同『<mark>炮</mark>』」，故作武器相關意義時可視偏好擇一使用。<u>宋</u>・<span id='book'>集韻</span>視「<mark>砲</mark>」同「<ruby>礮<rt>ㄆㄠˋ</rt></ruby>」，然今不推薦使用「礮」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

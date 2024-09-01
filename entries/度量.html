@@ -13,14 +13,14 @@
 <a href="/?word=度量" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>度</rb><rt>ㄉㄨˋ</rt></ruby><ruby><rb>量</rb><rt>ㄌㄧㄤˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>度</mark></rb><rt>ㄉㄨˋ</rt></ruby><ruby><rb>量</rb><rt>ㄌㄧㄤˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">肚量</span>
+                    <span id="aliases"><mark>肚</mark>量</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><span id='book'>說文解字</span>中，「度」本義為法制，後又指器量、胸襟；「肚」未見，見於<u>宋</u>・<span id='book'>玉篇</span>，指腹肚，與氣度義無涉。可知「肚量」本指腹肚容量，亦即食量；「度量」的「度」有氣度之義，貼合詞義，故用之。</div>
+                    <div id="definition"><span id='book'>說文解字</span>中，「<mark>度</mark>」本義為法制，後又指器量、胸襟；「<mark>肚</mark>」未見，見於<u>宋</u>・<span id='book'>玉篇</span>，指腹<mark>肚</mark>，與氣<mark>度</mark>義無涉。可知「<mark>肚</mark>量」本指腹<mark>肚</mark>容量，亦即食量；「<mark>度</mark>量」的「<mark>度</mark>」有氣<mark>度</mark>之義，貼合詞義，故用之。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

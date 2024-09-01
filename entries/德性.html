@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>德性｜燭字典</title>
-    <meta name="description" content="或為「」。">
+    <meta name="description" content="或為「德行」。">
     <link rel="icon" type="image/x-icon" href="images/zeeb.png">
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -13,14 +13,14 @@
 <a href="/?word=德性" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>德</rb><rt>ㄉㄜˊ</rt></ruby><ruby><rb>性</rb><rt>ㄒㄧㄥˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>德</rb><rt>ㄉㄜˊ</rt></ruby><ruby><rb><mark>性</mark></rb><rt>ㄒㄧㄥˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases"></span>
+                    <span id="aliases">德<mark>行</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「性」表示本性，「行」表示品行。「德性」、「德行」分別表示合乎道德的本性、品行，涵義略有不同，但均指道德方面的表現，惟後引申出相同的反諷用法——另人厭惡之言行舉止。於反諷用法中，「性」較為常見，故推薦之。然用於本義時，二字詞意不同，須注意。</div>
+                    <div id="definition">「<mark>性</mark>」表示本<mark>性</mark>，「<mark>行</mark>」表示品<mark>行</mark>。「德<mark>性</mark>」、「德<mark>行</mark>」分別表示合乎道德的本<mark>性</mark>、品<mark>行</mark>，涵義略有不同，但均指道德方面的表現，惟後引申出相同的反諷用法⸺另人厭惡之言<mark>行</mark>舉止。於反諷用法中，「<mark>性</mark>」較為常見，故推薦之。然用於本義時，二字詞意不同，須注意。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

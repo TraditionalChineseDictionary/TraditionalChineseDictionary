@@ -13,14 +13,14 @@
 <a href="/?word=炫目" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>炫</rb><rt>ㄒㄩㄢˋ</rt></ruby><ruby><rb>目</rb><rt>ㄇㄨˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>炫</mark></rb><rt>ㄒㄩㄢˋ</rt></ruby><ruby><rb>目</rb><rt>ㄇㄨˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">眩目</span>
+                    <span id="aliases"><mark>眩</mark>目</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">光彩奪目。雖然「眩目」組合部首一致，惟「眩」本義為視物搖晃不定，即暈；「炫」則為光彩亮麗、耀眼，此搭配「炫目」更貼切、符合該詞，故推薦之。</div>
+                    <div id="definition">光彩奪目。雖然「<mark>眩</mark>目」組合部首一致，惟「<mark>眩</mark>」本義為視物搖晃不定，即暈；「<mark>炫</mark>」則為光彩亮麗、耀眼，此搭配「<mark>炫</mark>目」更貼切、符合該詞，故推薦之。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

@@ -13,14 +13,14 @@
 <a href="/?word=濾心" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>濾</rb><rt>ㄌㄩˋ</rt></ruby><ruby><rb>心</rb><rt>ㄒㄧㄣ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>濾</rb><rt>ㄌㄩˋ</rt></ruby><ruby><rb><mark>心</mark></rb><rt>ㄒㄧㄣ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">濾芯</span>
+                    <span id="aliases">濾<mark>芯</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><span id='book'>說文解字</span>中，「心」本義為心臟，後引申為中心、中央、物體的中心部分；「芯」未見，<u>宋</u>・<span id='book'>集韻</span>釋為草名，<u>明</u>・<span id='book'>正字通</span>以「芯」為「心」之俗寫。故推薦「心」，基本不用「芯」字。「筆心」、「燈心」等亦然。</div>
+                    <div id="definition"><span id='book'>說文解字</span>中，「<mark>心</mark>」本義為<mark>心</mark>臟，後引申為中<mark>心</mark>、中央、物體的中<mark>心</mark>部分；「<mark>芯</mark>」未見，<u>宋</u>・<span id='book'>集韻</span>釋為草名，<u>明</u>・<span id='book'>正字通</span>以「<mark>芯</mark>」為「<mark>心</mark>」之俗寫。故推薦「<mark>心</mark>」，基本不用「<mark>芯</mark>」字。「筆<mark>心</mark>」、「燈<mark>心</mark>」等亦然。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

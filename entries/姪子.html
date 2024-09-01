@@ -13,14 +13,14 @@
 <a href="/?word=姪子" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>姪</rb><rt>ㄓˊ</rt></ruby><ruby><rb>子</rb><rt>˙ㄗ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>姪</mark></rb><rt>ㄓˊ</rt></ruby><ruby><rb>子</rb><rt>˙ㄗ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">侄子</span>
+                    <span id="aliases"><mark>侄</mark>子</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><u>漢</u>・<span id='book'>說文解字</span>中，「姪」本義為女子稱其兄弟之子女，後擴大為男女都可用之稱呼；「侄」未見，<u>遼</u>・<span id='book'>龍龕手鑑</span>釋為堅固、牢固，與此稱謂毫無關係。故應為「姪子」。</div>
+                    <div id="definition"><u>漢</u>・<span id='book'>說文解字</span>中，「<mark>姪</mark>」本義為女子稱其兄弟之子女，後擴大為男女都可用之稱呼；「<mark>侄</mark>」未見，<u>遼</u>・<span id='book'>龍龕手鑑</span>釋為堅固、牢固，與此稱謂毫無關係。故應為「<mark>姪</mark>子」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

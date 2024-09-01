@@ -22,7 +22,7 @@
 }
 
 :root {
-    --KaiTi: 'MoeKai', '標楷體', 'KaiU', 'BiauKai', 'DFKai-SB', serif;
+    --KaiTi: 'MoeKai', '標楷體', 'KaiU', 'BiauKai', 'DFKai-SB', var(--MingTi);
     --HeiTi: 'PingFang TC', 'HeiTi TC', 'Noto Sans TC', sans-serif;
     --Iansui: 'Iansui', var(--HeiTi), var(--KaiTi);
     --MingTi: 'CoolMing';
@@ -30,6 +30,9 @@
     --FontSizeSmaller: 1em;
     --FontSizeDefault: 1.3em;
     --FontSizeBigger: 1.5em;
+
+    --HighlightBg: #ebdac0;
+    --HighlightText: inherit;
 }
 
 ruby {
@@ -167,6 +170,12 @@ body {
 h1 {
     margin-bottom: 20px;
     font-weight: normal;
+}
+
+mark {
+    background: var(--HighlightBg);
+    color: var(--HighlightText);
+    border-radius: 20%;
 }
 
 #container, #standaloneContainer {
@@ -448,7 +457,7 @@ input[type="text"] {
     background-color: #fefefe;
     margin: 10% auto;
     padding: 30px;
-    line-height: 200%;
+    line-height: 35px;
     border-radius: 10px;
     width: 80%;
     max-width: 400px;
@@ -510,6 +519,7 @@ input[type="text"] {
         height: 30%;
         padding: 20px;
         border-radius: 0;
+        border-bottom: 1px solid #e6decd;
     }
 
     input[type="text"] {
@@ -524,7 +534,6 @@ input[type="text"] {
     #resultSection {
         width: 95%;
         height: 70%;
-        border-top: 1px solid #e6decd;
         border-radius: 0;
     }
 
@@ -542,7 +551,7 @@ input[type="text"] {
     }
 
     #back-to-main {
-        max-width: none;
+        width: 100%;
     }
 
     #header {

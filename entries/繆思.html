@@ -13,14 +13,14 @@
 <a href="/?word=繆思" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>繆</rb><rt>ㄇㄧㄡˋ</rt></ruby><ruby><rb>思</rb><rt>ㄙ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>繆</mark></rb><rt>ㄇㄧㄡˋ</rt></ruby><ruby><rb><mark>思</mark></rb><rt>ㄙ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">謬思、繆斯</span>
+                    <span id="aliases"><mark>謬</mark><mark>思</mark>、<mark>繆</mark><mark>斯</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><u>拉丁</u>文「Muses」的音譯，古<u>希臘</u>神話中掌管詩歌文藝女神之總稱，今多指創作者或藝術家的靈感泉源或能力。「謬」義多負面，「謬思」一詞若錯誤思想之義，故建議「繆」字。「繆思」較「繆斯」更為常見，是以推薦使用前者。</div>
+                    <div id="definition"><u>拉丁</u>文「Muses」的音譯，古<u>希臘</u>神話中掌管詩歌文藝女神之總稱，今多指創作者或藝術家的靈感泉源或能力。「<mark>謬</mark>」義多負面，「<mark>謬</mark><mark>思</mark>」一詞若錯誤<mark>思</mark>想之義，故建議「<mark>繆</mark>」字。「<mark>繆</mark><mark>思</mark>」較「<mark>繆</mark><mark>斯</mark>」更為常見，且「<mark>思</mark>」恰與「<mark>思</mark>想」有關，是以推薦使用「<mark>繆</mark><mark>思</mark>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

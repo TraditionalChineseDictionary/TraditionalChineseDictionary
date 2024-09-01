@@ -13,14 +13,14 @@
 <a href="/?word=摺疊" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>摺</rb><rt>ㄓㄜˊ</rt></ruby><ruby><rb>疊</rb><rt>ㄉㄧㄝˊ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>摺</mark></rb><rt>ㄓㄜˊ</rt></ruby><ruby><rb>疊</rb><rt>ㄉㄧㄝˊ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">折疊</span>
+                    <span id="aliases"><mark>折</mark>疊</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「摺」本指毀敗、折斷，後引申為彎曲；「折」本指截斷，後亦引申為彎曲。二字均見於<u>漢</u>・<span id='book'>說文解字</span>，出現時代相當，意義相似，今皆可作彎曲物體之義，又均非本義，故可視偏好自行擇一使用。</div>
+                    <div id="definition">「<mark>摺</mark>」本指毀敗、<mark>折</mark>斷，後引申為彎曲；「<mark>折</mark>」本指截斷，後亦引申為彎曲。二字均見於<u>漢</u>・<span id='book'>說文解字</span>，出現時代相當，意義相似，今皆可作彎曲物體之義，又均非本義，故可視偏好自行擇一使用。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

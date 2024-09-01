@@ -13,14 +13,14 @@
 <a href="/?word=彙報" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>彙</rb><rt>ㄏㄨㄟˋ</rt></ruby><ruby><rb>報</rb><rt>ㄅㄠˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>彙</mark></rb><rt>ㄏㄨㄟˋ</rt></ruby><ruby><rb>報</rb><rt>ㄅㄠˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">匯報</span>
+                    <span id="aliases"><mark>匯</mark>報</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「彙」、「匯」二字本義均與聚集、聚合無涉，前者為動物，後者為器皿。今「彙」、「匯」雖皆指分類、會合，惟有分用傾向，資料、文件之聚合多用「彙」，如「彙編」、「彙刊」；其餘事物之聚集則多用「匯」，如「人潮匯聚」、「商家匯集」。「彙報」指聚合資料，故用「彙」。</div>
+                    <div id="definition">「<mark>彙</mark>」、「<mark>匯</mark>」二字本義均與聚集、聚合無涉，前者為動物，後者為器皿。今「<mark>彙</mark>」、「<mark>匯</mark>」雖皆指分類、會合，惟有分用傾向，資料、文件之聚合多用「<mark>彙</mark>」，如「<mark>彙</mark>編」、「<mark>彙</mark>刊」；其餘事物之聚集則多用「<mark>匯</mark>」，如「人潮<mark>匯</mark>聚」、「商家<mark>匯</mark>集」。「<mark>彙</mark>報」指聚合資料，故用「<mark>彙</mark>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

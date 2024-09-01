@@ -13,14 +13,14 @@
 <a href="/?word=畜養" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>畜</rb><rt>ㄒㄩˋ</rt></ruby><ruby><rb>養</rb><rt>ㄧㄤˇ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>畜</mark></rb><rt>ㄒㄩˋ</rt></ruby><ruby><rb>養</rb><rt>ㄧㄤˇ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">蓄養</span>
+                    <span id="aliases"><mark>蓄</mark>養</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">教育部辭典中，僅「畜」有圈養、飼養之義，「蓄」則為儲存。二字意義不盡相同，是以不得混用。故以「畜養」為正。</div>
+                    <div id="definition">教育部辭典中，僅「<mark>畜</mark>」有圈養、飼養之義，「<mark>蓄</mark>」則為儲存。二字意義不盡相同，是以不得混用。故以「<mark>畜</mark>養」為正。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

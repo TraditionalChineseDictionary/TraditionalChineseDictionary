@@ -13,14 +13,14 @@
 <a href="/?word=配戴" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>配</rb><rt>ㄆㄟˋ</rt></ruby><ruby><rb>戴</rb><rt>ㄉㄞˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>配</mark></rb><rt>ㄆㄟˋ</rt></ruby><ruby><rb><mark>戴</mark></rb><rt>ㄉㄞˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">佩帶、佩戴、配帶</span>
+                    <span id="aliases"><mark>佩</mark><mark>帶</mark>、<mark>佩</mark><mark>戴</mark>、<mark>配</mark><mark>帶</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「配」為依適當標準或比例加以調和或製作，「佩」為繫物在衣帶或衣服上，可知前者較後者更為謹慎、細心。四字組合時側重釋義略異，使用「配」表經過一番考量後所攜；「佩」則為佩掛於身，同「帶」，注重攜帶成分；「戴」指附加於身。舉例，「配戴」用於細心搭配，「配戴耳環」如是；「佩帶」為隨身攜帶，「佩帶手槍」如是；「佩戴」介於兩者間，著重將物掛於身上，「佩戴口罩」如是；「配帶」罕用，可能為仔細搭配過後並無穿在身而攜帶於行李、囊中。一言以蔽之，「配／佩」代表此行為是否經過斟酌、考慮；「帶／戴」代表欲<a href="/?word=突出">突出</a>之義為隨身攜帶或穿掛於身。</div>
+                    <div id="definition">「<mark>配</mark>」為依適當標準或比例加以調和或製作，「<mark>佩</mark>」為繫物在衣<mark>帶</mark>或衣服上，可知前者較後者更為謹慎、細心。四字組合時側重釋義略異，使用「<mark>配</mark>」表經過一番考量後所攜；「<mark>佩</mark>」則為<mark>佩</mark>掛於身，同「<mark>帶</mark>」，注重攜<mark>帶</mark>成分；「<mark>戴</mark>」指附加於身。舉例，「<mark>配</mark><mark>戴</mark>」用於細心搭<mark>配</mark>，「<mark>配</mark><mark>戴</mark>耳環」如是；「<mark>佩</mark><mark>帶</mark>」為隨身攜<mark>帶</mark>，「<mark>佩</mark><mark>帶</mark>手槍」如是；「<mark>佩</mark><mark>戴</mark>」介於兩者間，著重將物掛於身上，「<mark>佩</mark><mark>戴</mark>口罩」如是；「<mark>配</mark><mark>帶</mark>」罕用，可能為仔細搭<mark>配</mark>過後並無穿在身而攜<mark>帶</mark>於行李、囊中。一言以蔽之，「<mark>配</mark>／<mark>佩</mark>」代表此行為是否經過斟酌、考慮；「<mark>帶</mark>／<mark>戴</mark>」代表欲<a href="/?word=突出">突出</a>之義為隨身攜<mark>帶</mark>或穿掛於身。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

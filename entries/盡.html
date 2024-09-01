@@ -13,14 +13,14 @@
 <a href="/?word=盡" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>盡</rb><rt>ㄐㄧㄣˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>盡</mark></rb><rt>ㄐㄧㄣˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">儘</span>
+                    <span id="aliases"><mark>儘</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「盡情」，儘量滿足自己的情感，不受拘束。「盡」為動詞，指窮盡一切、全部用出。此字原義係用餐結束盤面盡空後洗滌餐具之樣，後引申為完結終止（取之不盡、無窮無盡）、死亡（自盡）、竭力達成（竭盡所能、盡其所長）。「盡情」即是毫無節制地享受，故用此字。「盡」亦可做副詞，指全部都（應有盡有）或達到極限（盡善盡美、盡力）。若要表示期許達到最大限度卻未能或不可能，則用「<a href="/?word=儘">儘</a>」。</div>
+                    <div id="definition">「<mark>盡</mark>情」，<mark>儘</mark>量滿足自己的情感，不受拘束。「<mark>盡</mark>」為動詞，指窮<mark>盡</mark>一切、全部用出。此字原義係用餐結束盤面<mark>盡</mark>空後洗滌餐具之樣，後引申為完結終止（取之不<mark>盡</mark>、無窮無<mark>盡</mark>）、死亡（自<mark>盡</mark>）、竭力達成（竭<mark>盡</mark>所能、<mark>盡</mark>其所長）。「<mark>盡</mark>情」即是毫無節制地享受，故用此字。「<mark>盡</mark>」亦可做副詞，指全部都（應有<mark>盡</mark>有）或達到極限（<mark>盡</mark>善<mark>盡</mark>美、<mark>盡</mark>力）。若要表示期許達到最大限度卻未能或不可能，則用「<a href="/?word=儘">儘</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

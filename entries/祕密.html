@@ -13,14 +13,14 @@
 <a href="/?word=祕密" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>祕</rb><rt>ㄇㄧˋ</rt></ruby><ruby><rb>密</rb><rt>ㄇㄧˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>祕</mark></rb><rt>ㄇㄧˋ</rt></ruby><ruby><rb>密</rb><rt>ㄇㄧˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">秘密</span>
+                    <span id="aliases"><mark>秘</mark>密</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><span id='book'>說文解字</span>釋「祕」為神，未見「秘」。二字之混用，蓋因「示」及「禾」外形相似，為傳抄之訛寫；教育部異體字字典也指出「凡從『示』之字，以筆勢之小異，亦或作『禾』，故『秘』可收為『祕』之異體字」。今大陸地區及日本均視禾字旁「秘」為正，惟我國教育部辭典將其歸為同示字旁「祕」，此舉同眾多古韻書，故宜只用「祕」，完全不推薦書寫「秘」。「神祕」、「祕方」、「祕訣」、「祕書」⋯⋯亦復如是，惟「<ruby>祕<rt>ㄅㄧˋ</rt></ruby>魯」為西班牙文「Perú」之音譯，可視偏好自行決定使用何字。</div>
+                    <div id="definition"><span id='book'>說文解字</span>釋「<mark>祕</mark>」為神，未見「<mark>秘</mark>」。二字之混用，蓋因「示」及「禾」外形相似，為傳抄之訛寫；教育部異體字字典也指出「凡從『示』之字，以筆勢之小異，亦或作『禾』，故『<mark>秘</mark>』可收為『<mark>祕</mark>』之異體字」。今大陸地區及<u>日本</u>均視禾字旁「<mark>秘</mark>」為正，惟我國教育部辭典將其歸為同示字旁「<mark>祕</mark>」，此舉同眾多古韻書，故宜只用「<mark>祕</mark>」，完全不推薦書寫「<mark>秘</mark>」。「神<mark>祕</mark>」、「<mark>祕</mark>方」、「<mark>祕</mark>訣」、「<mark>祕</mark>書」⋯⋯亦復如是，惟「<ruby><mark>祕</mark><rt>ㄅㄧˋ</rt></ruby>魯」為<u>西班牙</u>文「Perú」之音譯，可視偏好自行決定使用何字。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

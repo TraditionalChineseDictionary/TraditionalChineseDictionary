@@ -13,14 +13,14 @@
 <a href="/?word=返照" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>返</rb><rt>ㄈㄢˇ</rt></ruby><ruby><rb>照</rb><rt>ㄓㄠˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>返</mark></rb><rt>ㄈㄢˇ</rt></ruby><ruby><rb>照</rb><rt>ㄓㄠˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">反照</span>
+                    <span id="aliases"><mark>反</mark>照</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">光線折回照射。<span id='book'>說文解字</span>中，「反」本義為翻轉、翻覆，亦可表示返回；「返」本義即返回。由於「返」字義較純，故推薦之。</div>
+                    <div id="definition">光線折回照射。<span id='book'>說文解字</span>中，「<mark>反</mark>」本義為翻轉、翻覆，亦可表示<mark>返</mark>回；「<mark>返</mark>」本義即<mark>返</mark>回。由於「<mark>返</mark>」字義較純，故推薦之。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

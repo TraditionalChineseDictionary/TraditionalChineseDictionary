@@ -13,14 +13,14 @@
 <a href="/?word=悲痛" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>悲</rb><rt>ㄅㄟ</rt></ruby><ruby><rb>痛</rb><rt>ㄊㄨㄥˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>悲</rb><rt>ㄅㄟ</rt></ruby><ruby><rb><mark>痛</mark></rb><rt>ㄊㄨㄥˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">悲慟</span>
+                    <span id="aliases">悲<mark>慟</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「痛」及「慟」除音同外，亦皆有傷心哀痛之義，惟有輕重程度之別。「痛」指悲傷、傷悼；「慟」則為過度悲傷、極度哀痛。故用字時，「悲慟」較「悲痛」之情感來得更為強烈。「痛哭／慟哭」、「傷痛／傷慟」、「哀痛／哀慟」等亦然。</div>
+                    <div id="definition">「<mark>痛</mark>」及「<mark>慟</mark>」除音同外，亦皆有傷心哀<mark>痛</mark>之義，惟有輕重程度之別。「<mark>痛</mark>」指悲傷、傷悼；「<mark>慟</mark>」則為過度悲傷、極度哀<mark>痛</mark>。故用字時，「悲<mark>慟</mark>」較「悲<mark>痛</mark>」之情感來得更為強烈。「<mark>痛</mark>哭／<mark>慟</mark>哭」、「傷<mark>痛</mark>／傷<mark>慟</mark>」、「哀<mark>痛</mark>／哀<mark>慟</mark>」等亦然。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

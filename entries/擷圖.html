@@ -13,14 +13,14 @@
 <a href="/?word=擷圖" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>擷</rb><rt>ㄐㄧㄝˊ</rt></ruby><ruby><rb>圖</rb><rt>ㄊㄨˊ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>擷</mark></rb><rt>ㄐㄧㄝˊ</rt></ruby><ruby><rb>圖</rb><rt>ㄊㄨˊ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">截圖</span>
+                    <span id="aliases"><mark>截</mark>圖</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「擷」指摘、捋、取，如「擷取」；「截」指割斷（截肢）、阻擋（攔截）、分明（截然）、單位（一截甘蔗）。故擷取螢幕畫面應用「擷圖」。</div>
+                    <div id="definition">「<mark>擷</mark>」指摘、捋、取，如「<mark>擷</mark>取」；「<mark>截</mark>」指割斷（<mark>截</mark>肢）、阻擋（攔<mark>截</mark>）、分明（<mark>截</mark>然）、單位（一<mark>截</mark>甘蔗）。故<mark>擷</mark>取螢幕畫面應用「<mark>擷</mark>圖」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

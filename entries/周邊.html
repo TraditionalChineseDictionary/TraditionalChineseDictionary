@@ -13,14 +13,14 @@
 <a href="/?word=周邊" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>周</rb><rt>ㄓㄡ</rt></ruby><ruby><rb>邊</rb><rt>ㄅㄧㄢ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>周</mark></rb><rt>ㄓㄡ</rt></ruby><ruby><rb>邊</rb><rt>ㄅㄧㄢ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">週邊</span>
+                    <span id="aliases"><mark>週</mark>邊</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">二字於今傾向分用之下仍見誤用，蓋常有重疊釋義致人難以分別。「週」與循環有關，如「週期」，惟環繞區域的外圍部分多用「周」，如「圓周」、「周圍」、「周長」，故「周邊」使用此字。其他字義有如本義縝密、全都，如「周到」、「周密」、「周詳」、「周知」；而「週」，參見「<a href="/?word=週末">週末</a>」。</div>
+                    <div id="definition">二字於今傾向分用之下仍見誤用，蓋常有重疊釋義致人難以分別。「<mark>週</mark>」與循環有關，如「<mark>週</mark>期」，惟環繞區域的外圍部分多用「<mark>周</mark>」，如「圓<mark>周</mark>」、「<mark>周</mark>圍」、「<mark>周</mark>長」，故「<mark>周</mark>邊」使用此字。其他字義有如本義縝密、全都，如「<mark>周</mark>到」、「<mark>周</mark>密」、「<mark>周</mark>詳」、「<mark>周</mark>知」；而「<mark>週</mark>」，參見「<a href="/?word=週末">週末</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

@@ -13,14 +13,14 @@
 <a href="/?word=曝晒" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>曝</rb><rt>ㄆㄨˋ</rt></ruby><ruby><rb>晒</rb><rt>ㄕㄞˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>曝</mark></rb><rt>ㄆㄨˋ</rt></ruby><ruby><rb><mark>晒</mark></rb><rt>ㄕㄞˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">曝曬、暴曬、暴晒</span>
+                    <span id="aliases"><mark>曝</mark><mark>曬</mark>、<mark>暴</mark><mark>曬</mark>、<mark>暴</mark><mark>晒</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「曝」為「暴」之分化後起字，專指晒於陽光下；本字「暴」原音「<ruby>暴<rt>ㄆㄨˋ</rt></ruby>」，本為雙手捧物曝晒於日下之會意字，衍伸為顯露（暴露），後破音「<ruby>暴<rt>ㄅㄠˋ</rt></ruby>」，指搏鬥（暴虎馮河）、蹧蹋（暴殄天物）、鼓起（暴青筋）、凶惡（殘暴）、急驟（暴飲暴食），故當使用「晒」義時以日部分化字「曝」為佳。至於「晒」，<span id='book'>說文解字</span>及多數古韻書以其為「曬」之異體，惟教育部標準字體卻視其為正字，故今反以「曬」為「晒」之異體，與大陸地區及日本標準一致。</div>
+                    <div id="definition">「<mark>曝</mark>」為「<mark>暴</mark>」之分化後起字，專指<mark>晒</mark>於陽光下；本字「<mark>暴</mark>」原音「<ruby><mark>暴</mark><rt>ㄆㄨˋ</rt></ruby>」，本為雙手捧物<mark>曝</mark><mark>晒</mark>於日下之會意字，衍伸為顯露（<mark>暴</mark>露），後破音「<ruby><mark>暴</mark><rt>ㄅㄠˋ</rt></ruby>」，指搏鬥（<mark>暴</mark>虎馮河）、蹧蹋（<mark>暴</mark>殄天物）、鼓起（<mark>暴</mark>青筋）、凶惡（殘<mark>暴</mark>）、急驟（<mark>暴</mark>飲<mark>暴</mark>食），故當使用「<mark>晒</mark>」義時以日部分化字「<mark>曝</mark>」為佳。至於「<mark>晒</mark>」，<span id='book'>說文解字</span>及多數古韻書以其為「<mark>曬</mark>」之異體，惟教育部標準字體卻視其為正字，故今反以「<mark>曬</mark>」為「<mark>晒</mark>」之異體，與大陸地區及<u>日本</u>標準一致。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

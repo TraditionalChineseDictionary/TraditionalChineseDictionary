@@ -13,14 +13,14 @@
 <a href="/?word=傾瀉" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>傾</rb><rt>ㄑㄧㄥ</rt></ruby><ruby><rb>瀉</rb><rt>ㄒㄧㄝˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>傾</rb><rt>ㄑㄧㄥ</rt></ruby><ruby><rb><mark>瀉</mark></rb><rt>ㄒㄧㄝˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">傾泄、傾洩</span>
+                    <span id="aliases">傾<mark>泄</mark>、傾<mark>洩</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">液體大量從高處傾倒流瀉。今「瀉」僅指水向下急流、拉肚子；<u>宋</u>・<span id='book'>玉篇</span>云「洩」同「泄」，而今二字字義相同，皆為液體排放、氣體散逸、發散、透露。一言以蔽之，「瀉」所帶之速度感較「洩」、「泄」更快、更湍急，故推薦之。</div>
+                    <div id="definition">液體大量從高處傾倒流<mark>瀉</mark>。今「<mark>瀉</mark>」僅指水向下急流、拉肚子；<u>宋</u>・<span id='book'>玉篇</span>云「<mark>洩</mark>」同「<mark>泄</mark>」，而今二字字義相同，皆為液體排放、氣體散逸、發散、透露。一言以蔽之，「<mark>瀉</mark>」所帶之速度感較「<mark>洩</mark>」、「<mark>泄</mark>」更快、更湍急，故推薦之。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

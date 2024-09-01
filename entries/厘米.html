@@ -13,14 +13,14 @@
 <a href="/?word=厘米" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>厘</rb><rt>ㄌㄧˊ</rt></ruby><ruby><rb>米</rb><rt>ㄇㄧˇ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>厘</mark></rb><rt>ㄌㄧˊ</rt></ruby><ruby><rb>米</rb><rt>ㄇㄧˇ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">釐米</span>
+                    <span id="aliases"><mark>釐</mark>米</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><span id='book'>說文解字</span>中，「釐」本義為福祉；不見「厘」，而<u>明</u>・<span id='book'>字彙</span>、<u>清</u>・<span id='book'>康熙字典</span>皆以「厘」為「釐」之俗寫。然我國<span id='book'>法定度量衡單位指南</span>採用詞形係「厘米」，故以「厘米」為正。</div>
+                    <div id="definition"><span id='book'>說文解字</span>中，「<mark>釐</mark>」本義為福祉；不見「<mark>厘</mark>」，而<u>明</u>・<span id='book'>字彙</span>、<u>清</u>・<span id='book'>康熙字典</span>皆以「<mark>厘</mark>」為「<mark>釐</mark>」之俗寫。然我國<span id='book'>法定度量衡單位指南</span>採用詞形係「<mark>厘</mark>米」，故以「<mark>厘</mark>米」為正。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

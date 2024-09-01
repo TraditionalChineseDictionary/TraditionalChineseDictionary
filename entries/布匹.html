@@ -13,14 +13,14 @@
 <a href="/?word=布匹" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>布</rb><rt>ㄅㄨˋ</rt></ruby><ruby><rb>匹</rb><rt>ㄆㄧˇ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>布</rb><rt>ㄅㄨˋ</rt></ruby><ruby><rb><mark>匹</mark></rb><rt>ㄆㄧˇ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">布疋</span>
+                    <span id="aliases">布<mark>疋</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><span id='book'>說文解字</span>中，「匹」為計算布品的量詞；「疋」原指足部，讀為<ruby>疋<rt>ㄕㄨ</rt></ruby>，後被借作計算布品的量詞，讀為<ruby>疋<rt>ㄆㄧˇ</rt></ruby>。因「匹」出現較早且較易視讀，故推薦之。</div>
+                    <div id="definition"><span id='book'>說文解字</span>中，「<mark>匹</mark>」為計算布品的量詞；「<mark>疋</mark>」原指足部，讀為<ruby><mark>疋</mark><rt>ㄕㄨ</rt></ruby>，後被借作計算布品的量詞，讀為<ruby><mark>疋</mark><rt>ㄆㄧˇ</rt></ruby>。因「<mark>匹</mark>」出現較早且較易視讀，故推薦之。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

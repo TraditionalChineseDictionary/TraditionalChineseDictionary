@@ -13,14 +13,14 @@
 <a href="/?word=茅坑" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>茅</rb><rt>ㄇㄠˊ</rt></ruby><ruby><rb>坑</rb><rt>ㄎㄥ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>茅</mark></rb><rt>ㄇㄠˊ</rt></ruby><ruby><rb>坑</rb><rt>ㄎㄥ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">毛坑</span>
+                    <span id="aliases"><mark>毛</mark>坑</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><span id='book'>說文解字</span>中，「茅」本義即為茅草，舊時廁所多以茅草覆頂，故稱為「茅坑」；「毛」本義指人眉毛鬚髮，引申為微細、多而瑣碎、粗糙，「毛坑」取其粗糙、未經加工之引申義。今「茅坑」使用率較高並更彌貼切，故推薦用之。「茅廁」等亦然。</div>
+                    <div id="definition"><span id='book'>說文解字</span>中，「<mark>茅</mark>」本義即為<mark>茅</mark>草，舊時廁所多以<mark>茅</mark>草覆頂，故稱為「<mark>茅</mark>坑」；「<mark>毛</mark>」本義指人眉<mark>毛</mark>鬚髮，引申為微細、多而瑣碎、粗糙，「<mark>毛</mark>坑」取其粗糙、未經加工之引申義。今「<mark>茅</mark>坑」使用率較高並更彌貼切，故推薦用之。「<mark>茅</mark>廁」等亦然。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

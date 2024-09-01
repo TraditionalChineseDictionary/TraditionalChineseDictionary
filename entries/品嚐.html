@@ -13,14 +13,14 @@
 <a href="/?word=品嚐" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>品</rb><rt>ㄆㄧㄣˇ</rt></ruby><ruby><rb>嚐</rb><rt>ㄔㄤˊ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb>品</rb><rt>ㄆㄧㄣˇ</rt></ruby><ruby><rb><mark>嚐</mark></rb><rt>ㄔㄤˊ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">品嘗</span>
+                    <span id="aliases">品<mark>嘗</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「嚐」為「嘗」之分化後起字，因「嘗」已衍伸出試探、經歷等義，是以「嚐」<a href="/?word=突顯">突顯</a>原字義以口辨別滋味，專用於飲食相關表述。可視是否真為飲食之情況而決定使用何字，如「試試看」即「淺嘗」、「喝一口」即「淺嚐」。「嘗」較「嚐」字義更廣，惟二字仍屬可分辨範圍內，故推薦分用之。「<a href="/?word=唸">唸</a>」、「<a href="/?word=噁">噁</a>」等亦適用，惟「<a href="/?word=含">含</a>」不可。</div>
+                    <div id="definition">「<mark>嚐</mark>」為「<mark>嘗</mark>」之分化後起字，因「<mark>嘗</mark>」已衍伸出試探、經歷等義，是以「<mark>嚐</mark>」<a href="/?word=突顯">突顯</a>原字義以口辨別滋味，專用於飲食相關表述。可視是否真為飲食之情況而決定使用何字，如「試試看」即「淺<mark>嘗</mark>」、「喝一口」即「淺<mark>嚐</mark>」。「<mark>嘗</mark>」較「<mark>嚐</mark>」字義更廣，惟二字仍屬可分辨範圍內，故推薦分用之。「<a href="/?word=唸">唸</a>」、「<a href="/?word=噁">噁</a>」等亦適用，惟「<a href="/?word=含">含</a>」不可。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
     <title>燭字典，逐字逐句點</title>
     <meta name="description" content="燭字典。查詢經常搞混的字詞，輕鬆辨析正確用字。">
     <link rel="icon" type="image/x-icon" href="images/zeeb.png">
-    <link rel="stylesheet" href="style.css?v=69">
+    <link rel="stylesheet" href="style.css">
     <!--<script src="https://emoji.fluent-cdn.com/latest/fluentemoji.min.js" crossorigin="anonymous"></script>-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
 </head>
@@ -47,16 +47,16 @@
                             本典即旨於協助辨析常混用字詞，讓不願混用國字之人有一處圭臬可循。所推之字僅為參考，使用者閱讀釋義後自行決定是否同意並用之。選用推薦詞形通常包含但不限於以下幾點：
                         </p>
                         <p style="text-indent: 0em; margin-top: 0;">
-                            一、分化字分擔詞義，若分化字可有效承擔本字詞義，其部首又能達到提示作用或統一，取之；
+                            一、以分化字分擔詞義，若某分化字可有效承擔本字詞義，其部首又能達到提示作用或統一，取之；
                         </p>
                         <p style="text-indent: 0em; margin-top: 0;">
-                            二、本義引申新義，若二字存在差距，今卻常混用，則取本義更貼近詞義者；
+                            二、由本義引申之新義，若二字原存在差距，今卻常混用，則取本義更貼近詞義者；
                         </p>
                         <p style="text-indent: 0em; margin-top: 0;">
-                            三、易於通曉，若二字同義，且一字較另一字更常見，取之；
+                            三、易於通曉、利於視讀，若二字同義，而一字較另一字更常見，取更常見之字；
                         </p>
                         <p style="text-indent: 0em; margin-top: 0;">
-                            四、符合我國標準，若二字其一並非我國標準用字，捨之。
+                            四、應符合我國標準，若二字其一並非我國標準用字，捨之。
                         </p>
                         <p style="text-indent: 2em; margin-top: 0;">
                             語言是與時俱進的，的確屬實，無可否認。然此並非大眾大肆通同、誤用、不選字之理，更非詆譭、蔑視標準或規範之由；經常出現使用正字、發音正確，卻被「看得懂就好」的人嘲笑，以「大家都這麼用」為正，是否為一種三人成虎、以訛傳訛？
@@ -97,6 +97,14 @@
                     <option value="Bigger">大字</option>
                 </select>
             </div>
+            <div class="highlight-selection">
+                <!--<label for="sizeSelect">重點</label>-->
+                <select id="highlightSelect">
+                    <option value="#ebdac0,inherit" selected>背景螢光</option>
+                    <option value="initial,indianred">國字標紅</option>
+                    <option value="initial,inherit">無突出色</option>
+                </select>
+            </div>
         </div>
     </div>
 
@@ -117,7 +125,7 @@
         let dictionary = {};
 
         function loadDictionary() {
-            fetch('entries.json?v=6')
+            fetch('entries.json?v=1')
                 .then(response => response.json())
                 .then(data => {
                     dictionary = data;
@@ -165,66 +173,16 @@
                     });
                 }
 
-                const hiddenAliases = dictionary[word].hiddenAliases;
+                const hiddenAliases = dictionary[word].highlighted;
                 if (hiddenAliases) {
                     hiddenAliases.forEach(alias => {
-                        if (alias.toLowerCase().includes(filter)) {
+                        if (filter.includes(alias.toLowerCase())) {
                             suggestions.add(word);
                             addedWords.add(word.toLowerCase());
                         }
                     });
                 }
             });
-
-            if (filter.match(/[\u4E00-\u9FAF]/)) {
-                const lastCharacter = filter[filter.length - 1];
-                Object.keys(dictionary).forEach(word => {
-                    if (word.includes(`～${lastCharacter}`) && !addedWords.has(word.toLowerCase())) {
-                        suggestions.add(word);
-                        addedWords.add(word.toLowerCase());
-                    }
-                });
-
-                Object.keys(dictionary).forEach(word => {
-                    if (word.includes('～')) {
-                        const suffix = word.replace('～', '');
-                        if (filter.endsWith(suffix) && !addedWords.has(word.toLowerCase())) {
-                            suggestions.add(word);
-                            addedWords.add(word.toLowerCase());
-                        }
-                    }
-                });
-
-                const firstCharacter = filter[0];
-                Object.keys(dictionary).forEach(word => {
-                    if (word.includes(`${firstCharacter}～`) && !addedWords.has(word.toLowerCase())) {
-                        suggestions.add(word);
-                        addedWords.add(word.toLowerCase());
-                    }
-                });
-
-                Object.keys(dictionary).forEach(word => {
-                    if (word.includes('～')) {
-                        const prefix = word.replace('～', '');
-                        if (filter.startsWith(prefix) && !addedWords.has(word.toLowerCase())) {
-                            suggestions.add(word);
-                            addedWords.add(word.toLowerCase());
-                        }
-                    }
-                });
-
-                Object.keys(dictionary).forEach(word => {
-                    if (word.includes('～')) {
-                        const parts = word.split('～');
-                        const prefix = parts[0];
-                        const suffix = parts[1];
-                        if (filter.startsWith(prefix) && filter.endsWith(suffix) && !addedWords.has(word.toLowerCase())) {
-                            suggestions.add(word);
-                            addedWords.add(word.toLowerCase());
-                        }
-                    }
-                });
-            }
 
             const suggestionBox = document.getElementById('autocomplete-list');
             suggestionBox.innerHTML = '';
@@ -258,33 +216,19 @@
                 if (aliases && aliases.includes(word)) {
                     return dictionary[entryWord];
                 }
-
-                const hiddenAliases = dictionary[entryWord].hiddenAliases;
-                if (hiddenAliases && hiddenAliases.includes(word)) {
-                    return dictionary[entryWord];
-                }
-            }
-
-            const lastCharacter = word[word.length - 1];
-            for (const entryWord in dictionary) {
-                if (entryWord.includes(`～${lastCharacter}`)) {
-                    const mainWord = word.slice(0, word.length - entryWord.length + 1);
-                    if (dictionary[mainWord + entryWord]) {
-                        return dictionary[mainWord + entryWord];
-                    }
-                }
             }
 
             for (const entryWord in dictionary) {
-                if (entryWord.includes('～')) {
-                    const suffix = entryWord.replace('～', '');
-                    if (word.endsWith(suffix)) {
-                        const mainWord = word.slice(0, word.length - suffix.length);
-                        if (dictionary[mainWord + '～' + suffix]) {
-                            return dictionary[mainWord + '～' + suffix];
+                const hiddenAliases = dictionary[entryWord].highlighted;
+                var entry = null;
+                if (hiddenAliases) {
+                    hiddenAliases.forEach(alias => {
+                        if (word.includes(alias.toLowerCase())) {
+                            entry = dictionary[entryWord];
                         }
-                    }
+                    });
                 }
+                if (entry) return entry;
             }
 
             return null;
@@ -305,9 +249,20 @@
             });
         }
 
-        function replaceBookPunctuation(text) {
-            return text.replace(/《|〈/g, "<span id='book'>")
-                .replace(/》|〉/g, "</span>");
+        function replaceIntoSyntax(text, highlighted) {
+            text = text.replace(/《|〈/g, "<span id='book'>").replace(/》|〉/g, "</span>");
+
+            highlighted.forEach(char => {
+                const regex = new RegExp(char, 'g');
+                text = text.replace(regex, `<mark>${char}</mark>`);
+            });
+
+            text = text.replace(/\[(.*?)\]/g, (match, innerWord) => {
+                innerWord = innerWord.replace('<mark>', '').replace('</mark>', '');
+                return `<a href="#" data-word="${innerWord}">${innerWord}</a>`;
+            });
+
+            return text;
         }
 
         function search(word) {
@@ -330,7 +285,9 @@
                         const rubyTag = document.createElement('ruby');
                         const rbTag = document.createElement('rb');
                         const rtTag = document.createElement('rt');
-                        rbTag.textContent = titleWord[i];
+
+                        if (entry.highlighted.includes(titleWord[i])) rbTag.innerHTML = `<mark>${titleWord[i]}</mark>`;
+                        else rbTag.textContent = titleWord[i];
 
                         if (entry.pronunciation[i].startsWith('˙')) {
                             const rtDot = document.createElement('span');
@@ -353,7 +310,7 @@
                     const aliasesDiv = document.querySelector('.word-info.aliases');
                     if (entry.aliases && entry.aliases.length > 0) {
                         const aliasesText = entry.aliases.join('、');
-                        document.getElementById('aliases').textContent = aliasesText;
+                        document.getElementById('aliases').innerHTML = replaceIntoSyntax(aliasesText, entry.highlighted);
                         aliasesDiv.style.display = 'block';
                     } else {
                         aliasesDiv.style.display = 'none';
@@ -362,14 +319,10 @@
                     if (entry.partOfSpeech) document.getElementById('wordPartOfSpeech').textContent = entry.partOfSpeech;
 
                     const wordDefinition = document.getElementById('definition');
-                    wordDefinition.innerHTML = replaceBookPunctuation(entry.definition).replace(/\[(.*?)\]/g, (match, innerWord) => {
-                        return `<a href="#" data-word="${innerWord}">${innerWord}</a>`;
-                    });
+                    wordDefinition.innerHTML = replaceIntoSyntax(entry.definition, entry.highlighted);
 
                     const wordSampleSentence = document.getElementById('wordSampleSentence');
-                    wordSampleSentence.innerHTML = replaceBookPunctuation(entry.sampleSentence).replace(/\[(.*?)\]/g, (match, innerWord) => {
-                        return `<a href="#" data-word="${innerWord}">${innerWord}</a>`;
-                    });
+                    wordSampleSentence.innerHTML = replaceIntoSyntax(entry.sampleSentence, entry.highlighted);
 
                     const url = window.location.href.split('?')[0] + 'entries/' + titleWord + (window.location.href.includes('dict') ? '' : '.html');
                     textareaForCopyURL.value = url;
@@ -409,14 +362,21 @@
                 document.body.style.fontSize = `var(--FontSize${savedSize})`;
                 document.querySelector(`#sizeSelect option[value="${savedSize}"]`).selected = true;
             }
+
+            const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+            if (savedHighlight) {
+                document.documentElement.style.setProperty('--HighlightBg', savedHighlight.split(',')[0]);
+                document.documentElement.style.setProperty('--HighlightText', savedHighlight.split(',')[1]);
+                document.querySelector(`#highlightSelect option[value="${savedHighlight}"]`).selected = true;
+            }
         };
 
-        const root = getComputedStyle(document.querySelector(':root'));
         const modalBg = document.querySelector('.modal');
         const modal = document.getElementById('settingsModal');
         const openModalBtn = document.getElementById('openSettingsBtn');
         const fontSelect = document.getElementById('fontSelect');
         const sizeSelect = document.getElementById('sizeSelect');
+        const highlightSelect = document.getElementById('highlightSelect');
 
         openModalBtn.addEventListener('click', () => {
             modalBg.classList.remove('out');
@@ -444,6 +404,12 @@
         sizeSelect.addEventListener('change', () => {
             document.body.style.fontSize = `var(--FontSize${sizeSelect.value})`;
             localStorage.setItem('JhuZihDien-SelectedSize', sizeSelect.value);
+        });
+
+        highlightSelect.addEventListener('change', () => {
+            document.documentElement.style.setProperty('--HighlightBg', highlightSelect.value.split(',')[0]);
+            document.documentElement.style.setProperty('--HighlightText', highlightSelect.value.split(',')[1]);
+            localStorage.setItem('JhuZihDien-HighlightStyle', highlightSelect.value);
         });
 </script>
 </body>

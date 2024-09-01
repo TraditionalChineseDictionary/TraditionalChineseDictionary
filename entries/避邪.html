@@ -13,14 +13,14 @@
 <a href="/?word=避邪" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>避</rb><rt>ㄅㄧˋ</rt></ruby><ruby><rb>邪</rb><rt>ㄒㄧㄝˊ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>避</mark></rb><rt>ㄅㄧˋ</rt></ruby><ruby><rb>邪</rb><rt>ㄒㄧㄝˊ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">辟邪</span>
+                    <span id="aliases"><mark>辟</mark>邪</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「辟」釋義繁多，惟今多已以他字分化出去、分擔字義。教育部辭典中，此字少數保留之本義含有驅除、屏除，即「辟邪」。然而，亦可解釋為避免、防止，即「避邪」。如此，推薦使用「避邪」可善用分化字。</div>
+                    <div id="definition">「<mark>辟</mark>」釋義繁多，惟今多已以他字分化出去、分擔字義。教育部辭典中，此字少數保留之本義含有驅除、屏除，即「<mark>辟</mark>邪」。然而，亦可解釋為<mark>避</mark>免、防止，即「<mark>避</mark>邪」。如此，推薦使用「<mark>避</mark>邪」可善用分化字。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

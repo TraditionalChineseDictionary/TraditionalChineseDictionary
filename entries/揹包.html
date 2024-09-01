@@ -13,14 +13,14 @@
 <a href="/?word=揹包" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>揹</rb><rt>ㄅㄟ</rt></ruby><ruby><rb>包</rb><rt>ㄅㄠ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>揹</mark></rb><rt>ㄅㄟ</rt></ruby><ruby><rb>包</rb><rt>ㄅㄠ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">背包</span>
+                    <span id="aliases"><mark>背</mark>包</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「背」、「揹」皆為負荷、承擔。四聲「<ruby>背<rt>ㄅㄟˋ</rt></ruby>」本義為胸部後方部位，引申為物體反面，又引申為違背；而自後腰以上至頸以下之部位，引申出負荷、承擔，為一聲「<ruby>背<rt>ㄅㄟ</rt></ruby>」。<span id='book'>說文解字</span>及歷代重要字書、韻書通通不見「揹」，應為近代後起，專指「負荷」。考量「背」主要讀四聲且意義繁多，舉凡「揹負」之義推薦以「揹」代之。</div>
+                    <div id="definition">「<mark>背</mark>」、「<mark>揹</mark>」皆為負荷、承擔。四聲「<ruby><mark>背</mark><rt>ㄅㄟˋ</rt></ruby>」本義為胸部後方部位，引申為物體反面，又引申為違<mark>背</mark>；而自後腰以上至頸以下之部位，引申出負荷、承擔，為一聲「<ruby><mark>背</mark><rt>ㄅㄟ</rt></ruby>」。<span id='book'>說文解字</span>及歷代重要字書、韻書通通不見「<mark>揹</mark>」，應為近代後起，專指「負荷」。考量「<mark>背</mark>」主要讀四聲且意義繁多，舉凡「<mark>揹</mark>負」之義推薦以「<mark>揹</mark>」代之。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

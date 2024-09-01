@@ -13,14 +13,14 @@
 <a href="/?word=型" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>型</rb><rt>ㄒㄧㄥˊ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>型</mark></rb><rt>ㄒㄧㄥˊ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">形</span>
+                    <span id="aliases"><mark>形</mark></span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">「型」本義為一種鑄器，今指模具、典範、種類，如「模型」、「典型」、「類型」、「血型」、「髮型」等。此字較為狹隘，後起詞專用於類別、版本，如「新型」、「版型」、「筆記型電腦」，惟設計領域較常用「造型」，本應為「造形」，詳見「<a href="/?word=形">形</a>」。</div>
+                    <div id="definition">「<mark>型</mark>」本義為一種鑄器，今指模具、典範、種類，如「模<mark>型</mark>」、「典<mark>型</mark>」、「類<mark>型</mark>」、「血<mark>型</mark>」、「髮<mark>型</mark>」等。此字較為狹隘，後起詞專用於類別、版本，如「新<mark>型</mark>」、「版<mark>型</mark>」、「筆記<mark>型</mark>電腦」，惟設計領域較常用「造<mark>型</mark>」，本應為「造<mark>形</mark>」，詳見「<a href="/?word=形">形</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

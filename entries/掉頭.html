@@ -13,14 +13,14 @@
 <a href="/?word=掉頭" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>掉</rb><rt>ㄉㄧㄠˋ</rt></ruby><ruby><rb>頭</rb><rt>ㄊㄡˊ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>掉</mark></rb><rt>ㄉㄧㄠˋ</rt></ruby><ruby><rb>頭</rb><rt>ㄊㄡˊ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">調頭</span>
+                    <span id="aliases"><mark>調</mark>頭</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition"><a href="/?word=迴轉">迴轉</a>。教育部辭典中僅「掉」含迴轉之義，「調」則無，故用「掉頭」。另見「<a href="/?word=調包">調包</a>」。</div>
+                    <div id="definition"><a href="/?word=迴轉">迴轉</a>。教育部辭典中僅「<mark>掉</mark>」含迴轉之義，「<mark>調</mark>」則無，故用「<mark>掉</mark>頭」。另見「<a href="/?word=調包">調包</a>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

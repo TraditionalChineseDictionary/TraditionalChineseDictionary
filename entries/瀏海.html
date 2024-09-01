@@ -13,14 +13,14 @@
 <a href="/?word=瀏海" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>瀏</rb><rt>ㄌㄧㄡˊ</rt></ruby><ruby><rb>海</rb><rt>ㄏㄞˇ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>瀏</mark></rb><rt>ㄌㄧㄡˊ</rt></ruby><ruby><rb>海</rb><rt>ㄏㄞˇ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">劉海</span>
+                    <span id="aliases"><mark>劉</mark>海</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">傳說古代仙人<u>劉海蟾</u>喜將頭髮梳至額前，故後人以其名作為垂於額前短髮之稱呼。「瀏海」源於「劉海」，為用字偏旁類化而成，部首統一，故推薦「瀏」。</div>
+                    <div id="definition">傳說古代仙人<u><mark>劉</mark>海蟾</u>喜將頭髮梳至額前，故後人以其名作為垂於額前短髮之稱呼。「<mark>瀏</mark>海」源於「<mark>劉</mark>海」，為用字偏旁類化而成，部首統一，故推薦「<mark>瀏</mark>」。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>

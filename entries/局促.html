@@ -13,14 +13,14 @@
 <a href="/?word=局促" id="back-to-main">回詞條</a>
         <div id="standaloneResultSection">
             <div class="word-page">
-                <h1 class="word-title" id="wordTitle"><ruby><rb>局</rb><rt>ㄐㄩˊ</rt></ruby><ruby><rb>促</rb><rt>ㄘㄨˋ</rt></ruby></h1>
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>局</mark></rb><rt>ㄐㄩˊ</rt></ruby><ruby><rb>促</rb><rt>ㄘㄨˋ</rt></ruby></h1>
                 <div class="word-info aliases">
                     <span id="aliasesIcon">或</span>
-                    <span id="aliases">侷促、跼促</span>
+                    <span id="aliases"><mark>侷</mark>促、<mark>跼</mark>促</span>
                 </div>
                 <div class="word-info" style="display: flex;">
                     <span id="wordPartOfSpeech"></span>
-                    <div id="definition">教育部辭典將「侷」限定為「侷促」之限用字，卻又同時將此詞通於「局促」，辭典中亦有收錄其他包含此字之條目如「侷限」，實屬混亂不堪。就二字本義，「局」本為短促、急迫，引申為狹窄，今更可指蜷曲、限制等。<span id='book'>說文解字</span>及其他傳統字韻書皆未就「侷」字單獨解釋，均合「侷促」二字為釋，可見「侷」受「促」影響而偏旁類化為人部，專用於「侷促」一詞，惟此種分化字對字義、詞義無濟，既未減輕本字負擔，亦無提示字詞意義。「跼」義為彎曲不能伸展，即狹小空間。「局促」原的確有狹小之義，惟後已引申出拘謹不自然樣，故仍用包含彎曲、拘束等義之「局」字。「局限」等亦然。</div>
+                    <div id="definition">教育部辭典將「<mark>侷</mark>」限定為「<mark>侷</mark>促」之限用字，卻又同時將此詞通於「<mark>局</mark>促」，辭典中亦有收錄其他包含此字之條目如「<mark>侷</mark>限」，實屬混亂不堪。就二字本義，「<mark>局</mark>」本為短促、急迫，引申為狹窄，今更可指蜷曲、限制等。<span id='book'>說文解字</span>及其他傳統字韻書皆未就「<mark>侷</mark>」字單獨解釋，均合「<mark>侷</mark>促」二字為釋，可見「<mark>侷</mark>」受「促」影響而偏旁類化為人部，專用於「<mark>侷</mark>促」一詞，惟此種分化字對字義、詞義無濟，既未減輕本字負擔，亦無提示字詞意義。「<mark>跼</mark>」義為彎曲不能伸展，即狹小空間。「<mark>局</mark>促」原的確有狹小之義，惟後已引申出拘謹不自然樣，故仍用包含彎曲、拘束等義之「<mark>局</mark>」字。「<mark>局</mark>限」等亦然。</div>
                 </div>
                 <div class="word-info">
                     <div id="wordSampleSentence"></div>
@@ -29,17 +29,23 @@
         </div>
     </div>
 <script>
-        window.onload = function () {
-            const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
-            if (savedFont) {
-                document.body.style.fontFamily = `var(--${savedFont})`;
-            }
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
 
-            const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
-            if (savedSize) {
-                document.body.style.fontSize = `var(--FontSize${savedSize})`;
-            }
-        };
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
 </script>
 </body>
 </html>
