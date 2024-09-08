@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靦腆｜燭字典</title>
+    <meta name="description" content="或為「腼腆、愐㥏、靦靦、緬靦、緬覥、靦覥」。">
+    <link rel="icon" type="image/x-icon" href="images/zeeb.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="standaloneContainer">
+<a href="/?word=靦腆" id="back-to-main">回詞條</a>
+        <div id="standaloneResultSection">
+            <div class="word-page">
+                <h1 class="word-title" id="wordTitle"><ruby><rb><mark>靦</mark></rb><rt>ㄇㄧㄢˇ</rt></ruby><ruby><rb><mark>腆</mark></rb><rt>ㄊㄧㄢˇ</rt></ruby></h1>
+                <div class="word-info aliases">
+                    <span id="aliasesIcon">或</span>
+                    <span id="aliases"><mark>腼</mark><mark>腆</mark>、<mark>愐</mark><mark>㥏</mark>、<mark>靦</mark><mark>靦</mark>、<mark>緬</mark><mark>靦</mark>、<mark>緬</mark><mark>覥</mark>、<mark>靦</mark><mark>覥</mark></span>
+                </div>
+                <div class="word-info" style="display: flex;">
+                    <span id="wordPartOfSpeech"></span>
+                    <div id="definition">教育部辭典中收錄各種此詞之排列組合，而義均為「心中羞澀，難為情而表現於顏面」，其中以「<mark>腼</mark><mark>腆</mark>」為正。然教育部標準字體中並無收錄「<mark>腼</mark>」字，其釋義亦僅為「<mark>腼</mark><mark>腆</mark>」之連綿用字。依照字義，「<mark>靦</mark>」原音為「<ruby><mark>靦</mark><rt>ㄊㄧㄢˇ</rt></ruby>」，指面見人，其大部分之詞亦讀此音，如「<mark>靦</mark>面」，僅於「<mark>靦</mark><mark>腆</mark>」時讀為「<ruby><mark>靦</mark><rt>ㄇㄧㄢˇ</rt></ruby>」；「<mark>腆</mark>」本指菜餚豐盛，後不知何時出現害羞、恬不知恥之樣；「<mark>緬</mark>」本義為一種細絲，今大多僅指國名<u><mark>緬</mark>甸</u>，本義罕用；「<mark>愐</mark>」即「勉」，勤勉；「<mark>㥏</mark>」，慚愧；「<mark>覥</mark>」為「<mark>靦</mark>」之異體字。綜上所述，似以「<mark>靦</mark><mark>㥏</mark>」最為合適；「<mark>靦</mark><mark>覥</mark>」部首一致，彷彿亦可。惟「<mark>㥏</mark>」並非常用字，「<mark>覥</mark>」多字體不錄，故使用已固化之「<mark>腆</mark>」。另補充大陸地區視「<mark>腼</mark>」為「<mark>靦</mark>」之簡化字，故其用「<mark>腼</mark><mark>腆</mark>」。</div>
+                </div>
+                <div class="word-info">
+                    <div id="wordSampleSentence"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    window.onload = function () {
+        const savedFont = localStorage.getItem('JhuZihDien-SelectedFont');
+        if (savedFont) {
+            document.body.style.fontFamily = `var(--${savedFont})`;
+        }
+
+        const savedSize = localStorage.getItem('JhuZihDien-SelectedSize');
+        if (savedSize) {
+            document.body.style.fontSize = `var(--FontSize${savedSize})`;
+        }
+
+        const savedHighlight = localStorage.getItem('JhuZihDien-HighlightStyle');
+        if (savedHighlight) {
+            document.documentElement.style.setProperty(`--HighlightBg`, savedHighlight.split(`,`)[0]);
+            document.documentElement.style.setProperty(`--HighlightText`, savedHighlight.split(`,`)[1]);
+        }
+    };
+</script>
+</body>
+</html>
